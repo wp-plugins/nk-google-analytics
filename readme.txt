@@ -8,7 +8,7 @@ Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds the necessary JavaScript code to enable Google Analytics. 
+Adds necessary javascript to enable Google Analytics tracking on your website.
 
 == Description ==
 
