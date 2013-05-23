@@ -43,7 +43,7 @@ function admin_menu_NKgoogleanalytics() {
 }
 
 function options_page_NKgoogleanalytics() {
-  include(WP_PLUGIN_DIR.'/NK-GoogleAnalytics/options.php');  
+  include(WP_PLUGIN_DIR.'/nk-google-analytics/options.php');  
 }
 
 function NKgoogleanalytics() {
