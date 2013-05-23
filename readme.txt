@@ -23,12 +23,13 @@ For more information about Display Advertising
 NK Google Analytics its simple, just add your Google Analytics ID.
 
 Features
-- Uses latest version of tracking code
-- Inserts your tracking code on all theme pages
-- Supports Classic tracking code
-- Supports Universal tracking code
-- Supports Display Advertising tracking code
-- No tracking for admin users logged-in.
+* Uses latest version of tracking code
+* Inserts your tracking code on all theme pages
+* Supports Classic tracking code
+* Supports Universal tracking code
+* Supports Display Advertising tracking code
+* No tracking for admin users logged-in.
+
 
 == Installation ==
 
