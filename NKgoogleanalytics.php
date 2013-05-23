@@ -62,14 +62,10 @@ _gaq.push(['_setAccount', '<?php echo $nkweb_id ?>']);
 _gaq.push(['_trackPageview']);
 (function() {
 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-
 <?php if($Display_Advertising=="false"){ ?>
-
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-
 <?php }else{ ?>
 ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';	
-
 <?php }?>
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
