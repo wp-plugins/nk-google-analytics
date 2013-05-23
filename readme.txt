@@ -4,7 +4,7 @@ Donate link: http://marodok.com/
 Tags: javascript, google, analytics, Tracking Code to Support Display Advertising, Remarketing Analytics, Universal Analytics
 Requires at least: 2.7
 Tested up to: 3.5.1
-Stable tag: 1
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
