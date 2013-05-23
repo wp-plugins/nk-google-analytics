@@ -1,4 +1,4 @@
-<div class="wrap">
+ <div class="wrap">
 <h2>Google Analytics config</h2>
 
 <form method="post" action="options.php">
@@ -7,14 +7,18 @@
 
 <table class="form-table">
 
+
 <tr valign="top">
 <th scope="row">Google Analytics ID:</th>
 <td><input type="text" name="nkweb_id" value="<?php echo get_option('nkweb_id'); ?>" /></td>
 </tr>
 
 <tr valign="top">
-<th scope="row">Domain:</th>
-<td><input type="text" name="nkweb_Domain" value="<?php echo get_option('nkweb_Domain'); ?>" /></td>
+<th scope="row">Enable Remarketing (Only Clasic analytics):</th>
+<td>
+	<input type="radio" name="nkweb_Display_Advertising" value="true" <?php if (get_option('nkweb_Display_Advertising') == "true"){ echo "checked "; } ?>> Yes<br>
+	<input type="radio" name="nkweb_Display_Advertising" value="false"<?php if (get_option('nkweb_Display_Advertising') == "false"){ echo "checked "; } ?>>  No <br>	
+</td>	
 </tr>
 
 <tr valign="top">
@@ -26,12 +30,10 @@
 </tr>
 
 <tr valign="top">
-<th scope="row">Enable Remarketing (Only Clasic analytics):</th>
-<td>
-	<input type="radio" name="nkweb_Display_Advertising" value="true" <?php if (get_option('nkweb_Display_Advertising') == "true"){ echo "checked "; } ?>> Yes<br>
-	<input type="radio" name="nkweb_Display_Advertising" value="false"<?php if (get_option('nkweb_Display_Advertising') == "false"){ echo "checked "; } ?>>  No <br>	
-</td>	
+<th scope="row">Domain (Only Universal analytics):</th>
+<td><input type="text" name="nkweb_Domain" value="<?php echo get_option('nkweb_Domain'); ?>" /></td>
 </tr>
+
 
 </table>
 
