@@ -8,21 +8,33 @@ Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Enables google analytics tracking code.
+Adds the necessary JavaScript code to enable Google Analytics. 
 
 == Description ==
 
-This plugin adds the required javascript (Universal and clasic) for google analytics.
+NK Google Analytics adds the required javascript to track your website, it supports classic, universal and remarketing Google Analytics tracking code. 
 
 For more information about Google Analytics visit:
-
 [Google Analytics](http://www.google.com/analytics)
+
+For more information about Display Advertising
+[Support Display Advertising](https://support.google.com/analytics/answer/2444872?hl=en&utm_id=ad)
+
+NK Google Analytics its simple, just add your Google Analytics ID.
+
+Features
+- Uses latest version of tracking code
+- Inserts your tracking code on all theme pages
+- Supports Classic tracking code
+- Supports Universal tracking code
+- Supports Display Advertising tracking code
+- No tracking for admin users logged-in.
 
 == Installation ==
 
-1. Upload `NK-GoogleAnalytics` directory to the `/wp-content/plugins/` directory
+1. Upload `nk-google-analytics` directory to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Add the ID from Google Analytics (UA-0000000-0) to the settings (Admin > Settings > NK GoogleAnalytics)
+3. Add the ID from Google Analytics (UA-0000000-0) to the settings (Admin > Settings > NK Google Analytics)
 
 
 == Frequently Asked Questions ==
@@ -45,6 +57,9 @@ Yes, it does
 2. Google Analytics settings page.
 
 == Changelog ==
+
+= 1.2 =
+* Fix some minor bugs
 
 = 1.1 =
 * Fix some bugs
