@@ -1,5 +1,5 @@
  <div class="wrap">
-<h2>Google Analytics config</h2>
+<h2>NK Google Analytics config</h2>
 
 <form method="post" action="options.php">
 <?php wp_nonce_field('update-options'); ?>
@@ -14,7 +14,7 @@
 </tr>
 
 <tr valign="top">
-<th scope="row">Enable Remarketing (Only Clasic analytics):</th>
+<th scope="row">Enable Remarketing :<br><small>(Only Clasic analytics)</small></th>
 <td>
 	<input type="radio" name="nkweb_Display_Advertising" value="true" <?php if (get_option('nkweb_Display_Advertising') == "true"){ echo "checked "; } ?>> Yes<br>
 	<input type="radio" name="nkweb_Display_Advertising" value="false"<?php if (get_option('nkweb_Display_Advertising') == "false"){ echo "checked "; } ?>>  No <br>	
@@ -30,7 +30,7 @@
 </tr>
 
 <tr valign="top">
-<th scope="row">Domain (Only Universal analytics):</th>
+<th scope="row">Domain :<br><small>(Only Universal analytics)</small></th>
 <td><input type="text" name="nkweb_Domain" value="<?php echo get_option('nkweb_Domain'); ?>" /></td>
 </tr>
 
