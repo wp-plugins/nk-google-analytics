@@ -1,9 +1,19 @@
- <div class="wrap">
+<div class="wrap">
 <h2>NK Google Analytics config</h2>
 
 <form method="post" action="options.php">
 <?php wp_nonce_field('update-options'); ?>
 <?php settings_fields('NKgoogleanalytics'); ?>
+
+<?php 
+	if(!get_option('nkweb_id')){
+?>
+		<div id="setting-error-settings_updated" class="updated settings-error"> 
+			<p><strong>	You must to set an Google Analytics ID.</strong></p></div>
+<?php 
+	}
+?>
+
 
 <table class="form-table">
 
