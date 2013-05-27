@@ -32,7 +32,7 @@ NK Google Analytics its simple, just add your Google Analytics ID.
 * Supports custom Google Analytics tracking code
 * No tracking for admin users logged-in.
 
-NK Google Analytics enables google analytics on all pages.
+NK Google Analytics enables Google Analytics on all pages.
 
 
 == Installation ==
@@ -63,8 +63,8 @@ Yes, it does.
 
 == Screenshots ==
 
-1. Modified settings panel with Google Analytics.
-2. Google Analytics settings page.
+1. Modified settings panel with NK Google Analytics.
+2. NK Google Analytics settings page.
 
 == Changelog ==
 
