@@ -4,7 +4,7 @@ Donate link: http://marodok.com/
 Tags: javascript, google, analytics, Tracking Code to Support Display Advertising, Remarketing Analytics, Universal Analytics
 Requires at least: 2.7
 Tested up to: 3.5.1
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,13 +22,17 @@ For more information about Display Advertising
 
 NK Google Analytics its simple, just add your Google Analytics ID.
 
-Features
-* Uses latest version of tracking code
+<h4>Features</h4>
+
+* Supports standard Google Analytics tracking via the latest async tracking methods (faster and more reliable than the older ga.js tracking method)
 * Inserts your tracking code on all theme pages
 * Supports Classic tracking code
 * Supports Universal tracking code
 * Supports Display Advertising tracking code
 * No tracking for admin users logged-in.
+* Supports custom Google Analytics tracking code
+
+NK Google Analytics enables google analytics on all pages.
 
 
 == Installation ==
@@ -42,15 +46,20 @@ Features
 
 = Does NK Google Analytics supports classic Tracking code? =
 
-Yes, it does
+Yes, it does.
 
 = Does NK Google Analytics supports Universal Tracking code? =
 
-Yes, it does
+Yes, it does.
 
 = Does NK Google Analytics supports Remarketing Tracking code? =
 
-Yes, it does
+Yes, it does.
+
+= Does NK Google Analytics supports Custom Tracking code? =
+
+Yes, it does.
+
 
 == Screenshots ==
 
@@ -58,6 +67,9 @@ Yes, it does
 2. Google Analytics settings page.
 
 == Changelog ==
+
+= 1.2.2 = 
+* Added support to custom Google Analytics tracking code
 
 = 1.2.1 = 
 * Google Analytics ID setting verification

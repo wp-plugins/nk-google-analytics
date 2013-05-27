@@ -6,14 +6,42 @@
 <?php settings_fields('NKgoogleanalytics'); ?>
 
 <?php 
+	$error = "";
+
 	if(!get_option('nkweb_id')){
+		$error = "You must to set an Google Analytics ID.";
+	}
+	if(get_option('nkweb_Display_Advertising') == "true"){
+		if(get_option('nkweb_Universal_Analytics')== "true"){
+			$error = "Universal Analytics was set to 'No' because Remarketing is Yes.";
+			update_option( "nkweb_Universal_Analytics", "false" );	
+		}		
+	}
+	if(get_option('nkweb_Universal_Analytics')== "true"){
+		if(get_option('nkweb_Display_Advertising') == "true"){
+			$error = "Remarketing was set to 'No' because Universal Analytics is Yes.";
+			update_option( "nkweb_Display_Advertising", "false" );	
+		}		
+		
+		if(get_option('nkweb_Domain')=="your-domain.com" || get_option('nkweb_Domain')==""){
+			$error="When you use Universal Analytics you must set your domain.";
+		}
+	}
+	if(get_option('nkweb_Use_Custom')== "true" && !get_option('nkweb_Custom_Code')){
+		update_option( "nkweb_Use_Custom", "false" );	
+		$error="When you use Custom code you must set your script into 'Custom Google Analytics tracking code' field. Use custom Google Analytics tracking code was set to 'No'.";
+	}
+
+if($error != ""){
+
 ?>
-		<div id="setting-error-settings_updated" class="updated settings-error"> 
-			<p><strong>	You must to set an Google Analytics ID.</strong></p></div>
+<div id="setting-error-settings_updated" class="updated settings-error"> 
+	<p><strong><?php echo $error; ?></strong></p>
+</div>
+
 <?php 
 	}
 ?>
-
 
 <table class="form-table">
 
@@ -44,7 +72,18 @@
 <td><input type="text" name="nkweb_Domain" value="<?php echo get_option('nkweb_Domain'); ?>" /></td>
 </tr>
 
+<tr valign="top">
+<th scope="row">Use custom Google Analytics tracking code</th>
+<td>
+	<input type="radio" name="nkweb_Use_Custom" value="true" <?php if (get_option('nkweb_Use_Custom') == "true"){ echo "checked "; } ?>> Yes<br>
+	<input type="radio" name="nkweb_Use_Custom" value="false"<?php if (get_option('nkweb_Use_Custom') == "false"){ echo "checked "; } ?>>  No <br>	
+</td>	
+</tr>
 
+<tr valign="top">
+<th scope="row">Custom Google Analytics tracking code</small></th>
+<td><textarea name="nkweb_Custom_Code" ><?php echo get_option('nkweb_Custom_Code'); ?></textarea>
+</tr>
 </table>
 
 <input type="hidden" name="action" value="update" />

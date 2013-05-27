@@ -3,7 +3,7 @@
 Plugin Name: NK Google Analytics
 Plugin URI: http://www.marodok.com/
 Description: Add <a href="http://www.google.com/analytics/">Google Analytics</a> javascript code on all pages.
-Version: 1.2.1
+Version: 1.2.2
 Author: Manfred Rodríguez
 Author URI: http://www.marodok.com
 */
@@ -22,6 +22,8 @@ function activate_NKgoogleanalytics() {
   add_option('nkweb_Display_Advertising', 'false');  
   add_option('nkweb_Universal_Analytics', 'false');
   add_option('nkweb_Domain', 'your-domain.com');
+  add_option('nkweb_Use_Custom', 'false');
+  add_option('nkweb_Custom_Code', '');
 }
 
 function deactive_NKgoogleanalytics() {
@@ -29,6 +31,8 @@ function deactive_NKgoogleanalytics() {
   delete_option('nkweb_Display_Advertising');
   delete_option('nkweb_Universal_Analytics');
   delete_option('nkweb_Domain');
+  delete_option('nkweb_Use_Custom');
+  delete_option('nkweb_Custom_Code');
 }
 
 function admin_init_NKgoogleanalytics() {
@@ -36,6 +40,8 @@ function admin_init_NKgoogleanalytics() {
   register_setting('NKgoogleanalytics', 'nkweb_Display_Advertising');
   register_setting('NKgoogleanalytics', 'nkweb_Universal_Analytics');
   register_setting('NKgoogleanalytics', 'nkweb_Domain');
+  register_setting('NKgoogleanalytics', 'nkweb_Use_Custom');
+  register_setting('NKgoogleanalytics', 'nkweb_Custom_Code');
 }
 
 function admin_menu_NKgoogleanalytics() {
@@ -52,10 +58,16 @@ function NKgoogleanalytics() {
   $Display_Advertising = get_option('nkweb_Display_Advertising');
   $Universal_Analytics = get_option('nkweb_Universal_Analytics');
   $Domain = get_option('nkweb_Domain');
+  $nkweb_Use_Custom = get_option('nkweb_Use_Custom');
+  $nkweb_Custom_Code = get_option('nkweb_Custom_Code');
   
-  if($nkweb_id != ""){
+  if($nkweb_Use_Custom == "true"){
+    echo "<script>" . $nkweb_Custom_Code . "</script>";
 
-    if($Universal_Analytics=="false"){
+  }else{
+    if($nkweb_id != ""){
+
+      if($Universal_Analytics=="false"){
 ?>
 <script type="text/javascript">
 var _gaq = _gaq || [];
@@ -72,7 +84,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 })();
 </script>
 <?php
-      }else{
+        }else{
 ?>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -83,6 +95,7 @@ ga('create', '<?php echo $nkweb_id; ?>', '<?php echo $Domain; ?>');
 ga('send', 'pageview');
 </script>
 <?php
+        }
       }
     }
   }
