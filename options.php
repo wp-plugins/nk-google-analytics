@@ -31,12 +31,11 @@
 			$http = "http";
 			
 			if(substr_count($userSet,"https")>0){
-				$http = "https";
+				$http = "https";				
+				$newDomain = str_replace("$http://", "", get_option('nkweb_Domain'));
+				update_option( "nkweb_Domain", $newDomain );	
+				$error="Your domain was set to $newDomain.";
 			}
-			$newDomain = str_replace("$http://", "", get_option('nkweb_Domain'));
-			update_option( "nkweb_Domain", $newDomain );	
-			$error="Your domain was set to $newDomain.";
-
 			if(substr_count($userSet,"www.")>0){
 				$newDomain = str_replace("www.", "", get_option('nkweb_Domain'));
 				update_option( "nkweb_Domain", $newDomain );	
