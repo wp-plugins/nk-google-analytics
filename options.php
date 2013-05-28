@@ -25,6 +25,23 @@
 		
 		if(get_option('nkweb_Domain')=="your-domain.com" || get_option('nkweb_Domain')==""){
 			$error="When you use Universal Analytics you must set your domain.";
+		
+		}else{
+			$userSet = get_option('nkweb_Domain');
+			$http = "http";
+			
+			if(substr_count($userSet,"https")>0){
+				$http = "https";
+			}
+			$newDomain = str_replace("$http://", "", get_option('nkweb_Domain'));
+			update_option( "nkweb_Domain", $newDomain );	
+			$error="Your domain was set to $newDomain.";
+
+			if(substr_count($userSet,"www.")>0){
+				$newDomain = str_replace("www.", "", get_option('nkweb_Domain'));
+				update_option( "nkweb_Domain", $newDomain );	
+				$error="Your domain was set to $newDomain.";
+			}
 		}
 	}
 	if(get_option('nkweb_Use_Custom')== "true" && !get_option('nkweb_Custom_Code')){

@@ -1,10 +1,10 @@
 === NK Google Analytics ===
 Contributors: marodok
 Donate link: http://marodok.com/
-Tags: javascript, google, analytics, Tracking Code to Support Display Advertising, Remarketing Analytics, Universal Analytics
+Tags: javascript, google, analytics, Tracking Code to Support, Display Advertising, Remarketing Analytics, Universal Analytics, google Analytics
 Requires at least: 2.7
 Tested up to: 3.5.1
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,9 @@ Yes, it does.
 2. NK Google Analytics settings page.
 
 == Changelog ==
+
+= 1.2.3 = 
+* Fix some minor bugs
 
 = 1.2.2 = 
 * Added support to custom Google Analytics tracking code

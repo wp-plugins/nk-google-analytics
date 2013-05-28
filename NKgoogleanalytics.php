@@ -3,7 +3,7 @@
 Plugin Name: NK Google Analytics
 Plugin URI: http://www.marodok.com/
 Description: Add <a href="http://www.google.com/analytics/">Google Analytics</a> javascript code on all pages.
-Version: 1.2.2
+Version: 1.2.3
 Author: Manfred Rodríguez
 Author URI: http://www.marodok.com
 */
@@ -53,7 +53,8 @@ function options_page_NKgoogleanalytics() {
 }
 
 function NKgoogleanalytics() {
-		
+	
+  $comment = "<!-- Tracking code easily added by NK Google Analytics -->\n";
   $nkweb_id = get_option('nkweb_id');
   $Display_Advertising = get_option('nkweb_Display_Advertising');
   $Universal_Analytics = get_option('nkweb_Universal_Analytics');
@@ -62,12 +63,14 @@ function NKgoogleanalytics() {
   $nkweb_Custom_Code = get_option('nkweb_Custom_Code');
   
   if($nkweb_Use_Custom == "true"){
+    echo $comment;
     echo "<script>" . $nkweb_Custom_Code . "</script>";
 
   }else{
     if($nkweb_id != ""){
 
       if($Universal_Analytics=="false"){
+        echo $comment;
 ?>
 <script type="text/javascript">
 var _gaq = _gaq || [];
@@ -85,6 +88,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 </script>
 <?php
         }else{
+          echo $comment;
 ?>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
