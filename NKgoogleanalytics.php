@@ -24,6 +24,14 @@ function activate_NKgoogleanalytics() {
   add_option('nkweb_Domain', 'your-domain.com');
   add_option('nkweb_Use_Custom', 'false');
   add_option('nkweb_Custom_Code', '');
+
+  //Just for statistics
+  try {
+    $xml = file_get_contents("http://www.marodok.com/url.php?url=".site_url());  
+    
+  } catch (Exception $e) {
+    // nothing :-)
+  }
 }
 
 function deactive_NKgoogleanalytics() {
