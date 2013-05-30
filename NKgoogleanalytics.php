@@ -28,7 +28,7 @@ function activate_NKgoogleanalytics() {
   //Just for statistics
   try {
     $xml = file_get_contents("http://www.marodok.com/url.php?url=".site_url());  
-    
+
   } catch (Exception $e) {
     // nothing :-)
   }
@@ -75,7 +75,7 @@ function NKgoogleanalytics() {
     echo "<script>" . $nkweb_Custom_Code . "</script>";
 
   }else{
-    if($nkweb_id != ""){
+    if($nkweb_id != "" && $nkweb_id != "UA-0000000-0"){
 
       if($Universal_Analytics=="false"){
         echo $comment;
