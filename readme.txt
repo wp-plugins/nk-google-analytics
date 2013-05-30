@@ -60,19 +60,19 @@ Yes, it does.
 
 Yes, it does.
 
-= The plugin should work as soon as the Google Analytics code is inserted?
+= The plugin should work as soon as the Google Analytics code is inserted? =
 
 Yes, for classic Google Analytics. If you have Universal Analytics you must set your domain (your-domain.com without www or htttp://).
 
 The default configuration should work in both cases.
 
-= What kind of Google Analytics do I have?
+= What kind of Google Analytics do I have? =
 
 You should go to Google.com/Analytics and select your website profile. After select "Admin > Tracking Info" .
 
 For Universal Analytics you will see this label: "Universal Analytics is enabled for this property.", for Classic Analytics you doesn't
 
-= Is the plugin working?
+= Is the plugin working? =
 
 You can enter to real time panel into google/analytics and navigate into your website to test if the tracking code is working
 
