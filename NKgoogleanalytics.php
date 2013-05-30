@@ -3,7 +3,7 @@
 Plugin Name: NK Google Analytics
 Plugin URI: http://www.marodok.com/nk-google-analytics/
 Description: Add <a href="http://www.google.com/analytics/">Google Analytics</a> javascript code on all pages.
-Version: 1.2.4
+Version: 1.2.5
 Author: Manfred Rodríguez
 Author URI: http://www.marodok.com
 */

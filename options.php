@@ -57,6 +57,12 @@
 			update_option( "nkweb_Custom_Code", "$new_code" );
 			$error="Labels < script > and < /script > was removed from your custom code.";
 		}
+		
+		$pattern = '/^UA\-[0-9]{8}\-[0-9]{1}$/';
+
+		if(preg_match($pattern, trim(get_option('nkweb_Custom_Code')))){
+			$error="Seems that you wrote only your Google Analytics ID in custom code, you can write it in \"Google Analytics ID\" field and turn off custom tracking code.";
+		}
 	}
 
 if($error != ""){
