@@ -1,7 +1,7 @@
 === NK Google Analytics ===
 Contributors: marodok
 Donate link: http://www.marodok.com/nk-google-analytics/
-Tags: javascript, google, analytics, Tracking Code to Support, Display Advertising, Remarketing Analytics, Universal Analytics, google Analytics
+Tags: javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, google analytics
 Requires at least: 2.7
 Tested up to: 3.5.1
 Stable tag: 1.2.4
@@ -12,7 +12,7 @@ Adds necessary javascript to enable Google Analytics tracking on your website.
 
 == Description ==
 
-NK Google Analytics adds the required javascript to track your website, it supports classic, universal and remarketing Google Analytics tracking code. 
+NK Google Analytics adds the required javascript to track your website, it supports <b>Classic</b>, <b>Universal</b> and <b>Remarketing</b> Google Analytics tracking code. 
 
 For more information about Google Analytics visit:
 [Google Analytics](http://www.google.com/analytics)
