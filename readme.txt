@@ -39,7 +39,8 @@ NK Google Analytics enables Google Analytics on all pages.
 
 1. Upload `nk-google-analytics` directory to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Add the ID from Google Analytics (UA-0000000-0) to the settings (Admin > Settings > NK Google Analytics)
+3. Add the ID from Google Analytics (UA-0000000-0) to the settings (Admin > Settings > NK Google Analytics > Google Analytics ID field) and press "Save Changes"
+4. Change other options like "Enable Remarketing" or "Universal Analytics" if you want
 
 
 == Frequently Asked Questions ==
@@ -75,6 +76,7 @@ For Universal Analytics you will see this label: "Universal Analytics is enabled
 = Is the plugin working? =
 
 You can enter to real time panel into google/analytics and navigate into your website to test if the tracking code is working
+
 
 
 == Screenshots ==
