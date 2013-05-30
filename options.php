@@ -46,9 +46,17 @@
 			}
 		}
 	}
-	if(get_option('nkweb_Use_Custom')== "true" && !get_option('nkweb_Custom_Code')){
-		update_option( "nkweb_Use_Custom", "false" );	
-		$error="When you use Custom code you must set your script into 'Custom Google Analytics tracking code' field. Use custom Google Analytics tracking code was set to 'No'.";
+	if(get_option('nkweb_Use_Custom')== "true"){
+		if(!get_option('nkweb_Custom_Code')){
+			update_option( "nkweb_Use_Custom", "false" );
+			$error="When you use Custom code you must set your script into 'Custom Google Analytics tracking code' field. Use custom Google Analytics tracking code was set to 'No'.";
+		}
+		if(substr_count(get_option('nkweb_Custom_Code'),"script>")>0){
+			$new_code = str_replace("<script>", "", get_option('nkweb_Custom_Code'));
+			$new_code = str_replace("</script>", "", $new_code);
+			update_option( "nkweb_Custom_Code", "$new_code" );
+			$error="Labels < script > and < /script > was removed from your custom code.";
+		}
 	}
 
 if($error != ""){

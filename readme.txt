@@ -26,10 +26,10 @@ NK Google Analytics its simple, just add your Google Analytics ID.
 
 * Supports standard Google Analytics tracking via the latest async tracking methods (faster and more reliable than the older ga.js tracking method)
 * Inserts your tracking code on all theme pages
-* Supports Classic tracking code
-* Supports Universal tracking code
+* Supports Classic Google Analytics tracking code
+* Supports Universal Google Analytics tracking code
 * Supports Display Advertising tracking code
-* Supports custom Google Analytics tracking code
+* Supports Custom Google Analytics tracking code
 * No tracking for admin users logged-in.
 
 NK Google Analytics enables Google Analytics on all pages.
