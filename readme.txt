@@ -1,10 +1,10 @@
 === NK Google Analytics ===
 Contributors: marodok
-Donate link: http://marodok.com/
+Donate link: http://www.marodok.com/nk-google-analytics/
 Tags: javascript, google, analytics, Tracking Code to Support, Display Advertising, Remarketing Analytics, Universal Analytics, google Analytics
 Requires at least: 2.7
 Tested up to: 3.5.1
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,22 @@ Yes, it does.
 
 Yes, it does.
 
+= The plugin should work as soon as the Google Analytics code is inserted?
+
+Yes, for classic Google Analytics. If you have Universal Analytics you must set your domain (your-domain.com without www or htttp://).
+
+The default configuration should work in both cases.
+
+= What kind of Google Analytics do I have?
+
+You should go to Google.com/Analytics and select your website profile. After select "Admin > Tracking Info" .
+
+For Universal Analytics you will see this label: "Universal Analytics is enabled for this property.", for Classic Analytics you doesn't
+
+= Is the plugin working?
+
+You can enter to real time panel into google/analytics and navigate into your website to test if the tracking code is working
+
 
 == Screenshots ==
 
@@ -67,6 +83,11 @@ Yes, it does.
 2. NK Google Analytics settings page.
 
 == Changelog ==
+
+= 1.2.4 = 
+* Update documentation and FAQ
+* Added Universal Analytics domain verification
+
 
 = 1.2.3 = 
 * Fix some minor bugs

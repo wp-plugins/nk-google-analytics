@@ -30,12 +30,15 @@
 			$userSet = get_option('nkweb_Domain');
 			$http = "http";
 			
-			if(substr_count($userSet,"https")>0){
-				$http = "https";				
+			if(substr_count($userSet,"http")>0){
+				if(substr_count($userSet,"https")>0){
+					$http = "https";								
+				}
 				$newDomain = str_replace("$http://", "", get_option('nkweb_Domain'));
 				update_option( "nkweb_Domain", $newDomain );	
-				$error="Your domain was set to $newDomain.";
-			}
+				$error="Your domain was set to $newDomain";	
+			}			
+
 			if(substr_count($userSet,"www.")>0){
 				$newDomain = str_replace("www.", "", get_option('nkweb_Domain'));
 				update_option( "nkweb_Domain", $newDomain );	
