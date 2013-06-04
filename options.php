@@ -8,7 +8,9 @@
 <?php 
 	$error = "";
 
-	
+	if(get_option('nkweb_Enable_GA')!="true" && get_option('nkweb_Enable_GA')!="false"){
+		update_option( "nkweb_Enable_GA", "true" );
+	}
 	if(!get_option('nkweb_id')){
 		$error = "You must to set an Google Analytics ID.";
 	}
