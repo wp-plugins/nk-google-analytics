@@ -20,10 +20,11 @@ if (!defined('WP_PLUGIN_DIR'))
 function activate_NKgoogleanalytics() {
   add_option('nkweb_id', 'UA-0000000-0');
   add_option('nkweb_Display_Advertising', 'false');  
-  add_option('nkweb_Universal_Analytics', 'false');
+  add_option('nkweb_Universal_Analytics', 'true');
   add_option('nkweb_Domain', 'your-domain.com');
   add_option('nkweb_Use_Custom', 'false');
   add_option('nkweb_Custom_Code', '');
+  add_option('nkweb_Enable_GA', 'true');
 
   //Just for statistics
   try {
@@ -41,6 +42,7 @@ function deactive_NKgoogleanalytics() {
   delete_option('nkweb_Domain');
   delete_option('nkweb_Use_Custom');
   delete_option('nkweb_Custom_Code');
+  delete_option('nkweb_Enable_GA');
 }
 
 function admin_init_NKgoogleanalytics() {
@@ -50,6 +52,7 @@ function admin_init_NKgoogleanalytics() {
   register_setting('NKgoogleanalytics', 'nkweb_Domain');
   register_setting('NKgoogleanalytics', 'nkweb_Use_Custom');
   register_setting('NKgoogleanalytics', 'nkweb_Custom_Code');
+  register_setting('NKgoogleanalytics', 'nkweb_Enable_GA');
 }
 
 function admin_menu_NKgoogleanalytics() {
@@ -69,15 +72,20 @@ function NKgoogleanalytics() {
   $Domain = get_option('nkweb_Domain');
   $nkweb_Use_Custom = get_option('nkweb_Use_Custom');
   $nkweb_Custom_Code = get_option('nkweb_Custom_Code');
+  $nkweb_Enable_GA = get_option('nkweb_Enable_GA');
   
-  if($nkweb_Use_Custom == "true"){
-    echo $comment;
-    echo "<script>" . $nkweb_Custom_Code . "</script>";
 
-  }else{
-    if($nkweb_id != "" && $nkweb_id != "UA-0000000-0"){
+  if($nkweb_Enable_GA == "true"){
+  
+    if($nkweb_Use_Custom == "true"){
+      
+      echo $comment;
+      echo "<script>" . $nkweb_Custom_Code . "</script>";
 
-      if($Universal_Analytics=="false"){
+    }else{
+      if($nkweb_id != "" && $nkweb_id != "UA-0000000-0"){
+
+        if($Universal_Analytics=="false"){
         echo $comment;
 ?>
 <script type="text/javascript">
@@ -111,7 +119,7 @@ ga('send', 'pageview');
       }
     }
   }
-
+}
 register_activation_hook(__FILE__, 'activate_NKgoogleanalytics');
 register_deactivation_hook(__FILE__, 'deactive_NKgoogleanalytics');
 

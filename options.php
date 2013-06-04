@@ -1,5 +1,5 @@
 <div class="wrap">
-<h2>NK Google Analytics config</h2>
+<h2>NK Google Analytics settings</h2>
 
 <form method="post" action="options.php">
 <?php wp_nonce_field('update-options'); ?>
@@ -23,7 +23,7 @@
 			update_option( "nkweb_Display_Advertising", "false" );	
 		}		
 		
-		if(get_option('nkweb_Domain')=="your-domain.com" || get_option('nkweb_Domain')==""){
+		if((get_option('nkweb_Domain')=="your-domain.com" || get_option('nkweb_Domain')=="") && get_option('nkweb_id') != "UA-0000000-0"){
 			$error="When you use Universal Analytics you must set your domain.";
 		
 		}else{
@@ -85,18 +85,10 @@ if($error != ""){
 </tr>
 
 <tr valign="top">
-<th scope="row">Enable Remarketing :<br><small>(Only Clasic analytics)</small></th>
+<th scope="row">Google Analytics Type</th>
 <td>
-	<input type="radio" name="nkweb_Display_Advertising" value="true" <?php if (get_option('nkweb_Display_Advertising') == "true"){ echo "checked "; } ?>> Yes<br>
-	<input type="radio" name="nkweb_Display_Advertising" value="false"<?php if (get_option('nkweb_Display_Advertising') == "false"){ echo "checked "; } ?>>  No <br>	
-</td>	
-</tr>
-
-<tr valign="top">
-<th scope="row">Universal Analytics</th>
-<td>
-	<input type="radio" name="nkweb_Universal_Analytics" value="true" <?php if (get_option('nkweb_Universal_Analytics') == "true"){ echo "checked "; } ?>> Yes<br>
-	<input type="radio" name="nkweb_Universal_Analytics" value="false"<?php if (get_option('nkweb_Universal_Analytics') == "false"){ echo "checked "; } ?>>  No <br>	
+	<input type="radio" name="nkweb_Universal_Analytics" value="true" <?php if (get_option('nkweb_Universal_Analytics') == "true"){ echo "checked "; } ?>> Universal Analytics<br>
+	<input type="radio" name="nkweb_Universal_Analytics" value="false"<?php if (get_option('nkweb_Universal_Analytics') == "false"){ echo "checked "; } ?>>  Classic Analytics<br>	
 </td>	
 </tr>
 
@@ -104,6 +96,15 @@ if($error != ""){
 <th scope="row">Domain :<br><small>(Only Universal analytics)</small></th>
 <td><input type="text" name="nkweb_Domain" value="<?php echo get_option('nkweb_Domain'); ?>" /></td>
 </tr>
+
+<tr valign="top">
+<th scope="row">Enable Display Advertising (Remarketing) :<br><small>(Only Clasic analytics)</small></th>
+<td>
+	<input type="radio" name="nkweb_Display_Advertising" value="true" <?php if (get_option('nkweb_Display_Advertising') == "true"){ echo "checked "; } ?>> Yes<br>
+	<input type="radio" name="nkweb_Display_Advertising" value="false"<?php if (get_option('nkweb_Display_Advertising') == "false"){ echo "checked "; } ?>>  No <br>	
+</td>	
+</tr>
+
 
 <tr valign="top">
 <th scope="row">Use custom Google Analytics tracking code</th>
@@ -117,6 +118,16 @@ if($error != ""){
 <th scope="row">Custom Google Analytics tracking code</small></th>
 <td><textarea name="nkweb_Custom_Code" ><?php echo get_option('nkweb_Custom_Code'); ?></textarea>
 </tr>
+
+<tr valign="top">
+<th scope="row">NK Google Analytics Status</th>
+<td>
+	<input type="radio" name="nkweb_Enable_GA" value="true" <?php if (get_option('nkweb_Enable_GA') == "true"){ echo "checked "; } ?>> Enable<br>
+	<input type="radio" name="nkweb_Enable_GA" value="false"<?php if (get_option('nkweb_Enable_GA') == "false"){ echo "checked "; } ?>>  Disable <br>	
+</td>	
+</tr>
+
+
 </table>
 
 <input type="hidden" name="action" value="update" />
@@ -126,4 +137,4 @@ if($error != ""){
 </p>
 
 </form>
-</div>
+</div> 

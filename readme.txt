@@ -4,7 +4,7 @@ Donate link: http://www.marodok.com/nk-google-analytics/
 Tags: javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, google analytics
 Requires at least: 2.7
 Tested up to: 3.5.1
-Stable tag: 1.2.5
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,7 +53,7 @@ Yes, it does.
 
 Yes, it does.
 
-= Does NK Google Analytics supports Remarketing Tracking code? =
+= Does NK Google Analytics supports Display Advertising / Remarketing Tracking code? =
 
 Yes, it does.
 
@@ -86,29 +86,33 @@ You can enter to real time panel into google/analytics and navigate into your we
 
 == Changelog ==
 
+= 1.2.6 = 
+* New enable/disable option.
+* Retyped and reordered some option for improve reading and comprehension of options.
+
 = 1.2.5 = 
-* Custom code fix
+* Custom code fix.
 
 = 1.2.4 = 
-* Update documentation and FAQ
-* Added Universal Analytics domain verification
+* Update documentation and FAQ.
+* Added Universal Analytics domain verification.
 
 
 = 1.2.3 = 
-* Fix some minor bugs
+* Fix some minor bugs.
 
 = 1.2.2 = 
-* Added support to custom Google Analytics tracking code
+* Added support to custom Google Analytics tracking code.
 
 = 1.2.1 = 
-* Google Analytics ID setting verification
+* Google Analytics ID setting verification.
 
 = 1.2 =
-* Fix some minor bugs
-* Update documentation
+* Fix some minor bugs.
+* Update documentation.
 
 = 1.1 =
-* Fix some bugs
+* Fix some bugs.
 
 = 1.0 =
 * First release.
