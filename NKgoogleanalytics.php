@@ -75,7 +75,7 @@ function NKgoogleanalytics() {
   $nkweb_Enable_GA = get_option('nkweb_Enable_GA');
   
 
-  if($nkweb_Enable_GA == "true"){
+  if($nkweb_Enable_GA != "false"){
   
     if($nkweb_Use_Custom == "true"){
       

@@ -8,6 +8,7 @@
 <?php 
 	$error = "";
 
+	
 	if(!get_option('nkweb_id')){
 		$error = "You must to set an Google Analytics ID.";
 	}
