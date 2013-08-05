@@ -3,7 +3,7 @@ Contributors: marodok
 Donate link: http://www.marodok.com/nk-google-analytics/
 Tags: javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, google analytics
 Requires at least: 2.7
-Tested up to: 3.5.1
+Tested up to: 3.6
 Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
