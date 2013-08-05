@@ -91,22 +91,63 @@ function NKgoogleanalytics() {
 
         if($Universal_Analytics=="false"){
     
-          $tk .= "<script type=\"text/javascript\">";
-          
-          $tk .= 'var _gaq = _gaq || []; \n';
-          $tk .= "_gaq.push(['_setAccount', '<?php echo $nkweb_id ?>']); \n";
-          $tk .= "_gaq.push(['_trackPageview']); \n";
-          $tk .= '(function() { \n';
-          $tk .= "var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; \n"; 
+          $tk .= "<script type=\"text/javascript\">\n";
+          $tk .= " var _gaq = _gaq || [];\n";
+          $tk .= " _gaq.push( ['_setAccount', '".$nkweb_id . "'],['_trackPageview'] );\n";
+          $tk .= "\n";
+          $tk .= " (function() {\n";
+          $tk .= "  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;\n";
           
           if($Display_Advertising=="false"){ 
-            $tk .= "ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; \n";
+            $tk .= " ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n";
           }else{
-            $tk .= "ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';	\n";
+            $tk .= " ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';\n";
           }
+          
+          $tk .= "  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);\n";
+          $tk .= " })();\n";
+          $tk .= "\n";
+          $tk .= " window.onload = function() {\n";
+          $tk .= "  if(_gaq.I==undefined){\n";
+          $tk .= "   _gaq.push(['_trackEvent', 'tracking_script', 'loaded', 'ga.js', ,true]);\n";
+          $tk .= "   ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;\n";
+          $tk .= "   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n";
+          $tk .= "   s = document.getElementsByTagName('script')[0];\n";
+          $tk .= "   gaScript = s.parentNode.insertBefore(ga, s);\n";
+          $tk .= "  } else {\n";
+          $tk .= "   _gaq.push(['_trackEvent', 'tracking_script', 'loaded', 'dc.js', ,true]);\n";
+          $tk .= "  }\n";
+          $tk .= " };\n";
+          $tk .= "";
 
-          $tk .= "var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); \n";
-          $tk .= "})(); \n";
+
+
+/*
+          $tk .= "try\n{\n(function() {\n";
+
+          $tk .= "var _gaq = _gaq || []; \n";
+          $tk .= "_gaq.push(['_setAccount', '".$nkweb_id . "']); \n";
+          $tk .= "_gaq.push(['_trackPageview']); \n";
+          
+          $tk .= " var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;\n"; 
+          
+          if($Display_Advertising=="false"){ 
+            $tk .= " ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n";
+          }else{
+            $tk .= " ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';\n";
+          }
+          $tk .= " var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);\n";
+          $tk .= " })();\n\n";
+          
+          $tk .= " window.onload = function () { \n";
+          $tk .= " setTimeout(function(){ if(typeof _gat === \"undefined\"){\n";
+          $tk .= " (function(){\n";
+          $tk .= " var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n";
+          $tk .= " var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);\n";
+          $tk .= " })(); _gaq.push(['_trackEvent','GA Remarketing Tag','DC Script','Failed',0,true])\n";
+          $tk .= " } }, 1000); }\n";
+          $tk .= "}\ncatch(err){\n    //Do nothing\n}\n";
+          */
           $tk .= "</script> \n";
           
         }else{
@@ -138,7 +179,16 @@ if (is_admin()) {
 }
 
 if (!is_admin()) {
+  
   add_action('wp_head', 'NKgoogleanalytics');
+  /*
+  $Display_Advertising = get_option('nkweb_Display_Advertising');
+  
+  if($Display_Advertising=="false"){ 
+    add_action('wp_head', 'NKgoogleanalytics');
+  }else{
+    add_action('wp_footer', 'NKgoogleanalytics');
+  }*/
 }
 
 ?>

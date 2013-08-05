@@ -87,7 +87,7 @@ You can enter to real time panel into google/analytics and navigate into your we
 == Changelog ==
 
 = 1.2.7 = 
-* Tracking issue fix
+* Tracking issue fix with remarketing tracking code
 
 = 1.2.6 = 
 * New enable/disable option.
