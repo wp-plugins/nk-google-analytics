@@ -4,7 +4,7 @@ Donate link: http://www.marodok.com/nk-google-analytics/
 Tags: javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, google analytics
 Requires at least: 2.7
 Tested up to: 3.5.1
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,9 @@ You can enter to real time panel into google/analytics and navigate into your we
 2. NK Google Analytics settings page.
 
 == Changelog ==
+
+= 1.2.7 = 
+* Tracking issue fix
 
 = 1.2.6 = 
 * New enable/disable option.
