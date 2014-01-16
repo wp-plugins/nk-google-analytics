@@ -3,8 +3,8 @@
 Plugin Name: NK Google Analytics
 Plugin URI: http://www.marodok.com/nk-google-analytics/
 Description: Add <a href="http://www.google.com/analytics/">Google Analytics</a> javascript code on all pages.
-Version: 1.2.7
-Author: Manfred Rodríguez
+Version: 1.2.8
+8Author: Manfred Rodríguez
 Author URI: http://www.marodok.com
 */
 
@@ -18,13 +18,20 @@ if (!defined('WP_PLUGIN_DIR'))
       define('WP_PLUGIN_DIR', WP_CONTENT_DIR.'/plugins');
 
 function activate_NKgoogleanalytics() {
+
+  $domain = 'your-domain.com';
+  if($_SERVER['SERVER_NAME']){
+    $domain = $_SERVER['SERVER_NAME'];
+  }
+
   add_option('nkweb_id', 'UA-0000000-0');
   add_option('nkweb_Display_Advertising', 'false');  
   add_option('nkweb_Universal_Analytics', 'true');
-  add_option('nkweb_Domain', 'your-domain.com');
+  add_option('nkweb_Domain', $domain);
   add_option('nkweb_Use_Custom', 'false');
   add_option('nkweb_Custom_Code', '');
   add_option('nkweb_Enable_GA', 'true');
+  add_option('nkweb_Error', '');
 
   //Just for statistics
   try {
@@ -43,6 +50,7 @@ function deactive_NKgoogleanalytics() {
   delete_option('nkweb_Use_Custom');
   delete_option('nkweb_Custom_Code');
   delete_option('nkweb_Enable_GA');
+  delete_option('nkweb_Error');
 }
 
 function admin_init_NKgoogleanalytics() {
@@ -53,6 +61,7 @@ function admin_init_NKgoogleanalytics() {
   register_setting('NKgoogleanalytics', 'nkweb_Use_Custom');
   register_setting('NKgoogleanalytics', 'nkweb_Custom_Code');
   register_setting('NKgoogleanalytics', 'nkweb_Enable_GA');
+  register_setting('NKgoogleanalytics', 'nkweb_Error');
 }
 
 function admin_menu_NKgoogleanalytics() {
@@ -73,6 +82,7 @@ function NKgoogleanalytics() {
   $nkweb_Use_Custom = get_option('nkweb_Use_Custom');
   $nkweb_Custom_Code = get_option('nkweb_Custom_Code');
   $nkweb_Enable_GA = get_option('nkweb_Enable_GA');
+  $nkweb_Error = get_option('nkweb_Error');
 
   $tk = "";
   
@@ -85,10 +95,13 @@ function NKgoogleanalytics() {
       
       
       $tk .= "<script>" . $nkweb_Custom_Code . "</script>";
+      $tk = str_replace("<script><script>", "<script>", $tk);
+      $tk = str_replace("</script></script>", "</script>", $tk);
 
     }else{
       if($nkweb_id != "" && $nkweb_id != "UA-0000000-0"){
 
+        error_log($Universal_Analytics);
         if($Universal_Analytics=="false"){
     
           $tk .= "<script type=\"text/javascript\">\n";
@@ -136,6 +149,8 @@ function NKgoogleanalytics() {
           $tk .= "</script> \n";
           
         }
+      }else{
+        update_option( "nkweb_Error", "There is a problem with your Google Analytics ID" );
       }
     }
     echo $tk;
@@ -149,8 +164,7 @@ if (is_admin()) {
   add_action('admin_menu', 'admin_menu_NKgoogleanalytics');
 }
 
-if (!is_admin()) {
-  
+if (!is_admin()) { 
   add_action('wp_head', 'NKgoogleanalytics'); 
 }
 
