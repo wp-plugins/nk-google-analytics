@@ -3,8 +3,8 @@ Contributors: marodok
 Donate link: http://www.marodok.com/nk-google-analytics/
 Tags: javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, google analytics
 Requires at least: 2.7
-Tested up to: 3.6
-Stable tag: 1.2.8
+Tested up to: 3.8
+Stable tag: 1.2.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,9 @@ You can enter to real time panel into google/analytics and navigate into your we
 
 == Changelog ==
 
+= 1.2.9 = 
+* Removed an error_log call, so the log file will not grow more
+* Added an index.html file in plugin's directory to avoid to crawlers to index it
 
 = 1.2.8 = 
 * Upgraded some validations and fixed some minor bugs
