@@ -72,6 +72,10 @@
 			$error="Seems that you wrote only your Google Analytics ID in custom code, you can write it in \"Google Analytics ID\" field and turn off custom tracking code.";
 		}
 	}
+	
+	if(!get_option('nkweb_code_in_head')){
+		update_option( "nkweb_code_in_head", "true" );
+	}
 
 if($error != ""){
 
@@ -128,6 +132,14 @@ if($error != ""){
 </tr>
 
 <tr valign="top">
+<th scope="row">Tracking code location</th>
+<td>
+	<input type="radio" name="nkweb_code_in_head" value="true" <?php if (get_option('nkweb_code_in_head') == "true"){ echo "checked "; } ?>> Head<br>
+	<input type="radio" name="nkweb_code_in_head" value="false"<?php if (get_option('nkweb_code_in_head') == "false"){ echo "checked "; } ?>>  End of the page<br>	
+</td>	
+</tr>
+
+<tr valign="top">
 <th scope="row">NK Google Analytics Status</th>
 <td>
 	<input type="radio" name="nkweb_Enable_GA" value="true" <?php if (get_option('nkweb_Enable_GA') == "true"){ echo "checked "; } ?>> On<br>
@@ -146,3 +158,6 @@ if($error != ""){
 
 </form>
 </div> 
+<br>
+<br>
+<br>

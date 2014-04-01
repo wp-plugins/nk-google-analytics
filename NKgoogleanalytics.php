@@ -30,8 +30,9 @@ function activate_NKgoogleanalytics() {
   add_option('nkweb_Domain', $domain);
   add_option('nkweb_Use_Custom', 'false');
   add_option('nkweb_Custom_Code', '');
-  add_option('nkweb_Enable_GA', 'true');
+  add_option('nkweb_Enable_GA', 'true');  
   add_option('nkweb_Error', '');
+  add_option('nkweb_code_in_head', 'true');
 
   //Just for statistics
   try {
@@ -51,6 +52,7 @@ function deactive_NKgoogleanalytics() {
   delete_option('nkweb_Custom_Code');
   delete_option('nkweb_Enable_GA');
   delete_option('nkweb_Error');
+  delete_option('nkweb_code_in_head');
 }
 
 function admin_init_NKgoogleanalytics() {
@@ -62,6 +64,7 @@ function admin_init_NKgoogleanalytics() {
   register_setting('NKgoogleanalytics', 'nkweb_Custom_Code');
   register_setting('NKgoogleanalytics', 'nkweb_Enable_GA');
   register_setting('NKgoogleanalytics', 'nkweb_Error');
+  register_setting('NKgoogleanalytics', 'nkweb_code_in_head');
 }
 
 function admin_menu_NKgoogleanalytics() {
@@ -82,7 +85,7 @@ function NKgoogleanalytics() {
   $nkweb_Use_Custom = get_option('nkweb_Use_Custom');
   $nkweb_Custom_Code = get_option('nkweb_Custom_Code');
   $nkweb_Enable_GA = get_option('nkweb_Enable_GA');
-  $nkweb_Error = get_option('nkweb_Error');
+  $nkweb_Error = get_option('nkweb_Error');  
 
   $tk = "";
   
@@ -163,8 +166,22 @@ if (is_admin()) {
   add_action('admin_menu', 'admin_menu_NKgoogleanalytics');
 }
 
-if (!is_admin()) { 
-  add_action('wp_head', 'NKgoogleanalytics'); 
+if(!function_exists('wp_get_current_user')) {
+    include(ABSPATH . "wp-includes/pluggable.php");
 }
 
-?>
+if(get_option('nkweb_code_in_head')=="true"){
+  $location = "wp_head";
+}else{
+  $location = "wp_footer";
+}
+
+try{
+  if (!current_user_can( 'edit_posts' )) {
+    add_action($location, 'NKgoogleanalytics');
+  }
+} catch (Exception $e) {
+  if (!is_admin()) { 
+    add_action($location, 'NKgoogleanalytics'); 
+  }  
+}
