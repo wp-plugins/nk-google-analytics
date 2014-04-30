@@ -3,7 +3,7 @@
 Plugin Name: NK Google Analytics
 Plugin URI: http://www.marodok.com/nk-google-analytics/
 Description: Add <a href="http://www.google.com/analytics/">Google Analytics</a> javascript code on all pages.
-Version: 1.3.1
+Version: 1.3.2
 8Author: Manfred Rodríguez
 Author URI: http://www.marodok.com
 */
@@ -26,6 +26,7 @@ function activate_NKgoogleanalytics() {
 
   add_option('nkweb_id', 'UA-0000000-0');
   add_option('nkweb_Display_Advertising', 'false');  
+  add_option('nkweb_track_login_and_register', 'false');  
   add_option('nkweb_Universal_Analytics', 'true');
   add_option('nkweb_Domain', $domain);
   add_option('nkweb_Use_Custom', 'false');
@@ -46,6 +47,7 @@ function activate_NKgoogleanalytics() {
 function deactive_NKgoogleanalytics() {
   delete_option('nkweb_id');
   delete_option('nkweb_Display_Advertising');
+  delete_option('nkweb_track_login_and_register');
   delete_option('nkweb_Universal_Analytics');
   delete_option('nkweb_Domain');
   delete_option('nkweb_Use_Custom');
@@ -58,6 +60,7 @@ function deactive_NKgoogleanalytics() {
 function admin_init_NKgoogleanalytics() {
   register_setting('NKgoogleanalytics', 'nkweb_id');
   register_setting('NKgoogleanalytics', 'nkweb_Display_Advertising');
+  register_setting('NKgoogleanalytics', 'nkweb_track_login_and_register');
   register_setting('NKgoogleanalytics', 'nkweb_Universal_Analytics');
   register_setting('NKgoogleanalytics', 'nkweb_Domain');
   register_setting('NKgoogleanalytics', 'nkweb_Use_Custom');
@@ -126,7 +129,11 @@ function NKgoogleanalytics() {
           $tk .= "  if(_gaq.I==undefined){\n";
           $tk .= "   _gaq.push(['_trackEvent', 'tracking_script', 'loaded', 'ga.js', ,true]);\n";
           $tk .= "   ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;\n";
-          $tk .= "   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n";
+          if($Display_Advertising=="false"){
+            $tk .= "   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';\n";
+          }else{
+            $tk .= "   ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';\n";
+          }
           $tk .= "   s = document.getElementsByTagName('script')[0];\n";
           $tk .= "   gaScript = s.parentNode.insertBefore(ga, s);\n";
           $tk .= "  } else {\n";
@@ -146,6 +153,9 @@ function NKgoogleanalytics() {
           $tk .= "})(window,document,'script','//www.google-analytics.com/analytics.js','ga'); \n";
 
           $tk .= "ga('create', '" . $nkweb_id. "', '" . $Domain . "'); \n";
+          if($Display_Advertising=="true"){
+            $tk .= "ga('require', 'displayfeatures'); \n";
+          }
           $tk .= "ga('send', 'pageview'); \n";
 
           $tk .= "</script> \n";
@@ -179,3 +189,7 @@ if(get_option('nkweb_code_in_head')=="true"){
 if (!is_admin()) { 
   add_action($location, 'NKgoogleanalytics'); 
 }  
+
+if(get_option('nkweb_track_login_and_register')=="true"){
+  add_action( 'login_head', 'NKgoogleanalytics');
+}
