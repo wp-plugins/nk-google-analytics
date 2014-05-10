@@ -8,7 +8,7 @@ Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds necessary javascript to enable Google Analytics tracking on your website.
+NK Google Analytics for Wordpress adds necessary javascript to enable Google Analytics tracking on your website. 
 
 == Description ==
 
@@ -21,6 +21,7 @@ For more information about Display Advertising
 [Support Display Advertising](https://support.google.com/analytics/answer/2444872?hl=en&utm_id=ad)
 
 NK Google Analytics its simple, just add your Google Analytics ID.
+
 
 <h4>Features</h4>
 
