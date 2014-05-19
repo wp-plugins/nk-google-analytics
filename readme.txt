@@ -3,8 +3,8 @@ Contributors: marodok
 Donate link: http://www.marodok.com/nk-google-analytics/
 Tags: javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, google analytics
 Requires at least: 3
-Tested up to: 3.9
-Stable tag: 1.3.2
+Tested up to: 3.9.1
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,9 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 2. NK Google Analytics settings page.
 
 == Changelog ==
+
+= 1.3.3 = 
+* login and register page tracking fix
 
 = 1.3.2 = 
 * Display Advertising "failover" fix (thanks to user j_shb)

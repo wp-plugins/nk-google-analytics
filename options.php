@@ -171,6 +171,12 @@ I am very glad that you like this plugin, i will appreciate a lot if you want to
 <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
 </form>
 
+<br>
+<br>
+<br>
+<a target="_blank" href="http://www.wordpress.org/support/view/plugin-reviews/nk-google-analytics">
+Thank you for review this plugin, with your help I can improve it
+</a>
 
 </div>
 
