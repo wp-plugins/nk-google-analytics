@@ -1,6 +1,6 @@
 === NK Google Analytics ===
 Contributors: marodok
-Donate link: http://www.marodok.com/nk-google-analytics/
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU
 Tags: javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, google analytics
 Requires at least: 3
 Tested up to: 3.9.1
