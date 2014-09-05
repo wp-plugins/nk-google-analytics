@@ -162,8 +162,10 @@ Remember, if you don't have an Google Analytics ID, you need to go to <a href="h
 </p>
 <br>
 <br>
+<p>
 I am very glad that you like this plugin, i will appreciate a lot if you want to make a donation. Thank you.
-
+</p>
+<br>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="CUC2VE9F3LADU">
