@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, google analytics
 Requires at least: 3
 Tested up to: 4.0
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,10 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 2. NK Google Analytics settings page.
 
 == Changelog ==
+
+
+= 1.3.4 = 
+* Corrected a conflict with plugin "janrain social sharing"
 
 = 1.3.3 = 
 * login and register page tracking fix

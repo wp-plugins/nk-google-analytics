@@ -17,7 +17,7 @@ if (!defined('WP_PLUGIN_URL'))
 if (!defined('WP_PLUGIN_DIR'))
       define('WP_PLUGIN_DIR', WP_CONTENT_DIR.'/plugins');
 
-function is_login_page() {
+function nk_is_login_page() {
     return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
 }
 
@@ -197,6 +197,6 @@ if (!is_admin()) {
 if(get_option('nkweb_track_login_and_register')=="true"){
   add_action( 'login_head', 'NKgoogleanalytics');
 }
-if(is_login_page() && get_option('nkweb_track_login_and_register')=="true"){
+if(nk_is_login_page() && get_option('nkweb_track_login_and_register')=="true"){
   add_action( 'login_head', 'NKgoogleanalytics'); 
 }
