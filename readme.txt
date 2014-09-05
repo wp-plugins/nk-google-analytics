@@ -1,18 +1,18 @@
 === NK Google Analytics ===
 Contributors: marodok
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU
-Tags: javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, google analytics
+Tags: google analytics, javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics
 Requires at least: 3
 Tested up to: 4.0
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-NK Google Analytics for Wordpress adds necessary javascript to enable Google Analytics tracking on your website. 
+NK Google Analytics for Wordpress adds necessary javascript to enable Google Analytics tracking on your website.
 
 == Description ==
 
-NK Google Analytics adds the required javascript to track your website, it supports <b>Classic</b>, <b>Universal</b> and <b>Remarketing</b> Google Analytics tracking code. 
+Need Google Analytics on your website? NK Google Analytics adds the required javascript to track your website, it supports <b>Classic</b>, <b>Universal</b> and <b>Remarketing</b> Google Analytics tracking code. 
 
 For more information about Google Analytics visit:
 [Google Analytics](http://www.google.com/analytics)
@@ -20,7 +20,7 @@ For more information about Google Analytics visit:
 For more information about Display Advertising
 [Support Display Advertising](https://support.google.com/analytics/answer/2444872?hl=en&utm_id=ad)
 
-NK Google Analytics its simple, just add your Google Analytics ID.
+NK Google Analytics its simple, just add your Google Analytics ID and click "Save changes"
 
 
 <h4>Features</h4>
@@ -30,7 +30,7 @@ NK Google Analytics its simple, just add your Google Analytics ID.
 * Inserts your tracking code into Head or Footer area
 * Supports Classic Google Analytics tracking code
 * Supports Universal Google Analytics tracking code
-* Supports Display Advertising tracking code
+* Supports Display Advertising (Remarketing) tracking code
 * Supports Custom Google Analytics tracking code
 * No tracking for admin users logged-in
 * Track login and register page if you want to
@@ -103,6 +103,8 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 
 == Changelog ==
 
+= 1.3.5 = 
+* Corrected a conflict with plugin "wpMandrill"
 
 = 1.3.4 = 
 * Corrected a conflict with plugin "janrain social sharing"

@@ -150,7 +150,7 @@ if($error != ""){
 </table>
 <input type="hidden" name="action" value="update" />
 <p class="submit">
-	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+	<input type="submit" class="button-primary" value="<?php _e('Save changes') ?>" />
 </p>
 </form>
 </div>
