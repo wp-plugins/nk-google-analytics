@@ -4,13 +4,15 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: google analytics, javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics
 Requires at least: 3
 Tested up to: 4.0
-Stable tag: 1.3.5
+Stable tag: 1.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 NK Google Analytics for Wordpress adds necessary javascript to enable Google Analytics tracking on your website.
 
 == Description ==
+
+[**Get even more sharing tools at SumoMe.com**](http://www.SumoMe.com/?src=nkga)
 
 Need Google Analytics on your website? NK Google Analytics adds the required javascript to track your website, it supports <b>Classic</b>, <b>Universal</b> and <b>Remarketing</b> Google Analytics tracking code. 
 
@@ -22,6 +24,7 @@ For more information about Display Advertising
 
 NK Google Analytics its simple, just add your Google Analytics ID and click "Save changes"
 
+[**Get even more sharing tools at SumoMe.com**](http://www.SumoMe.com/?src=nkga)
 
 <h4>Features</h4>
 
