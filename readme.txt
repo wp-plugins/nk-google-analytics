@@ -107,6 +107,10 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 == Changelog ==
 
 = 1.3.5 = 
+* Changes in menu
+* Added links for sumome
+
+= 1.3.5 = 
 * Corrected a conflict with plugin "wpMandrill"
 
 = 1.3.4 = 
