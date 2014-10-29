@@ -24,7 +24,7 @@ For more information about Display Advertising
 
 NK Google Analytics its simple, just add your Google Analytics ID and click "Save changes"
 
-[**Get even more sharing tools at SumoMe.com**](http://www.SumoMe.com/?src=nkga)
+
 
 <h4>Features</h4>
 
@@ -40,6 +40,8 @@ NK Google Analytics its simple, just add your Google Analytics ID and click "Sav
 
 NK Google Analytics enables Google Analytics on all pages.
 
+
+[**Get even more sharing tools at SumoMe.com**](http://www.SumoMe.com/?src=nkga)
 
 == Installation ==
 
