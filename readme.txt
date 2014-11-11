@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: google analytics, javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics
 Requires at least: 3
 Tested up to: 4.0
-Stable tag: 1.3.6
+Stable tag: 1.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,7 +108,11 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 
 == Changelog ==
 
-= 1.3.5 = 
+= 1.3.7 = 
+* Changes in menu
+* Fixed HTTPS (https://wordpress.org/support/topic/ssl-option-load-scripts-from-secure-url)
+
+= 1.3.6 = 
 * Changes in menu
 * Added links for sumome
 

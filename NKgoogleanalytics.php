@@ -3,7 +3,7 @@
 Plugin Name: NK Google Analytics
 Plugin URI: http://www.marodok.com/nk-google-analytics/
 Description: Add <a href="http://www.google.com/analytics/">Google Analytics</a> javascript code on all pages.
-Version: 1.3.6
+Version: 1.3.7
 Author: Manfred Rodríguez
 Author URI: http://www.marodok.com
 */
@@ -78,10 +78,11 @@ function admin_init_NKgoogleanalytics() {
   register_setting('NKgoogleanalytics', 'nkweb_code_in_head');
 }
 
-function admin_menu_NKgoogleanalytics() {
- 
-  add_menu_page('NK Google Analytics settings', 'NK Google Analytics', 'administrator', 'NKgoogleanalytics','options_page_NKgoogleanalytics');
-  add_submenu_page( 'NKgoogleanalytics' ,  'Plugins by SumoMe', 'Plugins by SumoMe' , 'administrator', 'NKgoogleanalytics-sumome', 'sumome_contents' );
+function admin_menu_NKgoogleanalytics() { 
+  //add_menu_page('NK Google Analytics settings', 'NK Google Analytics', 'administrator', 'NKgoogleanalytics','options_page_NKgoogleanalytics');
+  //add_submenu_page( 'NKgoogleanalytics' ,  'Plugins by SumoMe', 'Plugins by SumoMe' , 'administrator', 'NKgoogleanalytics-sumome', 'sumome_contents' );
+  add_options_page('NK Google Analytics', 'NK Google Analytics', 'manage_options', 'NKgoogleanalytics', 'options_page_NKgoogleanalytics'); 
+  add_options_page('Plugins by SumoMe', 'Plugins by SumoMe', 'manage_options', 'plugins-by-sumome', 'sumome_contents'); 
 }
 
 function options_page_NKgoogleanalytics() {
@@ -160,7 +161,7 @@ function NKgoogleanalytics() {
           $tk .= "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ \n";
           $tk .= "(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), \n";
           $tk .= "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) \n";
-          $tk .= "})(window,document,'script','//www.google-analytics.com/analytics.js','ga'); \n";
+          $tk .= "})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); \n";
 
           $tk .= "ga('create', '" . $nkweb_id. "', '" . $Domain . "'); \n";
           if($Display_Advertising=="true"){
