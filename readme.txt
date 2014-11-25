@@ -12,7 +12,7 @@ NK Google Analytics for Wordpress adds necessary javascript to enable Google Ana
 
 == Description ==
 
-[**Get even more sharing tools at SumoMe.com**](http://www.SumoMe.com/?src=nkga)
+[**Get even more sharing tools at SumoMe.com**](http://www.marodok.com/link-manager.php?to=sumome)
 
 Need Google Analytics on your website? NK Google Analytics adds the required javascript to track your website, it supports <b>Classic</b>, <b>Universal</b> and <b>Remarketing</b> Google Analytics tracking code. 
 
@@ -41,7 +41,7 @@ NK Google Analytics its simple, just add your Google Analytics ID and click "Sav
 NK Google Analytics enables Google Analytics on all pages.
 
 
-[**Get even more sharing tools at SumoMe.com**](http://www.SumoMe.com/?src=nkga)
+[**Feel free to test these tools to grow your website traffic**](http://www.marodok.com/link-manager.php?to=sumome)
 
 == Installation ==
 
