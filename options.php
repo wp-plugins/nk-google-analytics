@@ -179,6 +179,10 @@ I am very glad that you like this plugin, i will appreciate a lot if you want to
 <a target="_blank" href="http://www.wordpress.org/support/view/plugin-reviews/nk-google-analytics#postform">
 Thank you for review this plugin, with your help I can improve it
 </a>
+<br>
+<br>
+<br>
+<a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome">Feel free to test these tools to grow your website traffic for free</a>
 
 </div>
 
