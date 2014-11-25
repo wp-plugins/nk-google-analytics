@@ -191,16 +191,16 @@ if(!function_exists('sumome_contents')){
       <div class="inside">
         <style>.has_ifr iframe{vertical-align: bottom;}</style>
         <div class="row has_ifr">
-          <h4><a target="_blank" href="http://sumome.com/app/share/?src=nkga">Share</a> - Get more traffic to your site with these super easy to setup share buttons!</h4>
-          <h4><a target="_blank" href="http://sumome.com/app/image-sharer/?src=nkga">Image Sharer</a>- Get your images shared way more often</h4>
-          <h4><a target="_blank" href="http://sumome.com/app/highlighter/?src=nkga">Highlighter</a>- Increase your content sharing significantly</h4>
-          <h4><a target="_blank" href="http://sumome.com/app/list-builder/?src=nkga">List Builder</a>- Double your daily email list growth </h4>
-          <h4><a target="_blank" href="http://sumome.com/app/scroll-box/?src=nkga">Scroll Box</a> - Ask for an email address at the right time</h4>
-          <h4><a target="_blank" href="http://sumome.com/app/heat-maps/?src=nkga">Heat Maps</a>- See where your website visitors are clicking (or not)</h4>
-          <h4><a target="_blank" href="http://sumome.com/app/content-analytics/?src=nkga">Content Analytics</a>-  Find out what content your readers are reading on your site - and where they stop</h4>
-          <h4><a target="_blank" href="http://sumome.com/app/smart-bar/?src=nkga">Smart Bar</a> - An easy and non-intrusive way to ask people to join your email list</h4>
-          <h4><a target="_blank" href="http://sumome.com/app/leads/?src=nkga">Leads</a>- Offer free incentives to increase your daily email signups </h4>
-          <h4><a target="_blank" href="http://sumome.com/app/contact-form/?src=nkga">Contact Form</a>- Make it easy for customers to talk to you</h4>
+          <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-share">Share</a> - Get more traffic to your site with these super easy to setup share buttons!</h4>
+          <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-image-sharer">Image Sharer</a>- Get your images shared way more often</h4>
+          <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-highlighter">Highlighter</a>- Increase your content sharing significantly</h4>
+          <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-list-builder">List Builder</a>- Double your daily email list growth </h4>
+          <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-scroll-box">Scroll Box</a> - Ask for an email address at the right time</h4>
+          <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-heat-maps">Heat Maps</a>- See where your website visitors are clicking (or not)</h4>
+          <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-content-analytics">Content Analytics</a>-  Find out what content your readers are reading on your site - and where they stop</h4>
+          <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-smart-bar">Smart Bar</a> - An easy and non-intrusive way to ask people to join your email list</h4>
+          <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-leads">Leads</a>- Offer free incentives to increase your daily email signups </h4>
+          <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-contact-form">Contact Form</a>- Make it easy for customers to talk to you</h4>
         </div>
       </div>
     </div>
