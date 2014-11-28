@@ -3,8 +3,8 @@ Contributors: marodok
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU
 Tags: google analytics, javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics
 Requires at least: 3
-Tested up to: 4.0
-Stable tag: 1.3.7
+Tested up to: 4.0.1
+Stable tag: 1.3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,6 +107,9 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 2. NK Google Analytics settings page.
 
 == Changelog ==
+
+= 1.3.8 = 
+* Minor code fixes
 
 = 1.3.7 = 
 * Changes in menu
