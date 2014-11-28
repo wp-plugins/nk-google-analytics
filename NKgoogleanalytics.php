@@ -22,6 +22,18 @@ if (!defined('WP_PLUGIN_DIR'))
 /*
     Functions
 */
+function nk_custom_links($links) {  
+  $sumome_link = '<a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome">Free tools</a>'; 
+  $donate_link = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU">Donate</a>'; 
+  $settings_link = '<a href="options-general.php?page=NKgoogleanalytics">Settings</a>'; 
+  array_unshift($links, $sumome_link); 
+  array_unshift($links, $donate_link); 
+  array_unshift($links, $settings_link); 
+  return $links; 
+}
+$plugin = plugin_basename(__FILE__); 
+add_filter("plugin_action_links_$plugin", 'nk_custom_links' );
+
 function nk_is_login_page() {
     return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
 }
