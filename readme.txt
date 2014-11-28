@@ -109,7 +109,7 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 == Changelog ==
 
 = 1.3.9 = 
-* Minor code fix
+* Minor code fix (https://wordpress.org/support/topic/n-between-body-and-script-tag) 
 
 = 1.3.8 = 
 * Minor code fixes
