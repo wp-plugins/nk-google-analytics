@@ -42,7 +42,7 @@ NK Google Analytics its simple, just add your Google Analytics ID and click "Sav
 NK Google Analytics enables Google Analytics on all pages.
 
 
-= Feedback / Review=
+= Feedback / Review =
 
 Please take the time to rate this plugin, let me and others to know about your experiences by leaving a review, with your help I can improve the plugin for you and other users.
 
