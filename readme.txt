@@ -1,10 +1,10 @@
 === NK Google Analytics ===
 Contributors: marodok
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU
-Tags: google analytics, javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics
+Tags: GA code, google nalytics, javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, Google Analytics in WordPress, universal analytics, WordPress Google Analytics, WP Google Analytics, WP Google Analytics Plugin
 Requires at least: 3
 Tested up to: 4.0.1
-Stable tag: 1.3.9
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,7 +26,7 @@ NK Google Analytics its simple, just add your Google Analytics ID and click "Sav
 
 
 
-<h4>Features</h4>
+== Features == 
 
 * Supports standard Google Analytics tracking via the latest async tracking methods (faster and more reliable than the older ga.js tracking method)
 * Inserts your tracking code on all theme pages
@@ -37,8 +37,17 @@ NK Google Analytics its simple, just add your Google Analytics ID and click "Sav
 * Supports Custom Google Analytics tracking code
 * No tracking for admin users logged-in
 * Track login and register page if you want to
+* Don't track logged users by role
 
 NK Google Analytics enables Google Analytics on all pages.
+
+
+= Feedback / Review=
+
+Please take the time to rate this plugin, let me and others to know about your experiences by leaving a review, with your help I can improve the plugin for you and other users.
+
+
+If you like the plugin please [Donate here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU). 
 
 
 [**Feel free to test these tools to grow your website traffic**](http://www.marodok.com/link-manager.php?to=sumome)
@@ -73,7 +82,7 @@ Yes, it does.
 
 = The plugin should work as soon as the Google Analytics code is inserted? =
 
-Yes, for classic Google Analytics. 
+Yes.
 
 = What kind of Google Analytics do I have? =
 
@@ -97,6 +106,10 @@ If the option is set to "Yes", Yes, it does.
 
 Yes.
 
+= There is an option to ignore users by role? =
+
+Yes.
+
 = What does "NK Google Analytics Status" option do? =
 
 This option can "turn off" the plugin, if is set to "on" the plugin will print tracking code in the web page, if not, the plugin will not insert the tracking code.
@@ -104,9 +117,14 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 == Screenshots ==
 
 1. Modified settings panel with NK Google Analytics.
-2. NK Google Analytics settings page.
+2. NK Google Analytics basic settings page.
+3. NK Google Analytics more settings page.
 
 == Changelog ==
+
+= 1.4 = 
+* Improved interface
+* Role level control for tracking code (https://wordpress.org/support/topic/dont-want-to-track-logged-in-admin-users, https://wordpress.org/support/topic/suggestion-non-include-code-as-administrator)
 
 = 1.3.9 = 
 * Minor code fix (https://wordpress.org/support/topic/n-between-body-and-script-tag) 

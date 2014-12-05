@@ -3,11 +3,13 @@
 Plugin Name: NK Google Analytics
 Plugin URI: http://www.marodok.com/nk-google-analytics/
 Description: Add <a href="http://www.google.com/analytics/">Google Analytics</a> javascript code on all pages.
-Version: 1.3.9
+Version: 1.4
 Author: Manfred Rodríguez
 Author URI: http://www.marodok.com
+Text Domain: NKgoogleanalytics
 */
 
+defined('ABSPATH') or die("No script kiddies please!");
 
 if (!defined('WP_CONTENT_URL'))
       define('WP_CONTENT_URL', get_option('siteurl').'/wp-content');
@@ -22,6 +24,10 @@ if (!defined('WP_PLUGIN_DIR'))
 /*
     Functions
 */
+
+/**
+ * Custom links
+ */
 function nk_custom_links($links) {  
   $sumome_link = '<a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome">Free tools</a>'; 
   $donate_link = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU">Donate</a>'; 
@@ -34,10 +40,73 @@ function nk_custom_links($links) {
 $plugin = plugin_basename(__FILE__); 
 add_filter("plugin_action_links_$plugin", 'nk_custom_links' );
 
+/**
+ * is a login page?
+ */
 function nk_is_login_page() {
     return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
 }
 
+/**
+ * CSS and JS
+ */
+function add_assets(){
+  wp_enqueue_style('style_plugin',plugins_url( 'css/style.css' , __FILE__ ) ); 
+  wp_enqueue_script('script_plugin',plugins_url( 'js/script.js' , __FILE__ ) ); 
+}
+add_action('admin_init','add_assets');
+
+/**
+ *  Get evaluation code
+ */
+function nk_evaluation() {
+    
+
+    if(get_option('nkweb_code_in_head')=="true"){
+      $location = "wp_head";
+    }else{
+      $location = "wp_footer";
+    }
+
+
+    if(is_user_logged_in()) {
+      
+      $current_user = wp_get_current_user();       
+      $user_role = $current_user->roles[0];
+      
+
+      $if = 'if( ';
+      $a = 1;
+      $ignored_roles = get_option('nkweb_ignore');
+      $total_ignored_roles = count(get_option('nkweb_ignore'));
+      
+      if(is_array($ignored_roles) && $total_ignored_roles > 0){
+
+        foreach ( $ignored_roles as $role => $ignore) {
+          $roletmp = explode('_', $role);
+          $roleName = $roletmp[2];
+
+          if($ignore == 'true')
+            $if .= '("'.$user_role.'"=="'.$roleName.'")';
+          if($a<$total_ignored_roles)
+            $if .= ' || ';
+          ++$a;
+        }
+        
+        $if .= ') return; else add_action('.$location.', "NKgoogleanalytics"); ';
+        eval($if);      
+
+      }else{
+        add_action($location, 'NKgoogleanalytics');         
+      }
+    }else{
+      add_action($location, 'NKgoogleanalytics'); 
+    }
+}
+
+/**
+ * Plugin activation
+ */
 function activate_NKgoogleanalytics() {
 
   $domain = 'your-domain.com';
@@ -55,8 +124,11 @@ function activate_NKgoogleanalytics() {
   add_option('nkweb_Enable_GA', 'true');  
   add_option('nkweb_Error', '');
   add_option('nkweb_code_in_head', 'true');
+  add_option('nkweb_ignore', '');
 
-  //Just for statistics
+  /**
+   * Just the public url will be sent ONCE, no other data will be tracked or catched.
+   */
   try {
     $xml = file_get_contents('http://www.marodok.com/url.php?url='.site_url());  
 
@@ -65,6 +137,9 @@ function activate_NKgoogleanalytics() {
   }
 }
 
+/**
+ * Plugin  deactivation 
+ */
 function deactive_NKgoogleanalytics() {
   delete_option('nkweb_id');
   delete_option('nkweb_Display_Advertising');
@@ -76,6 +151,7 @@ function deactive_NKgoogleanalytics() {
   delete_option('nkweb_Enable_GA');
   delete_option('nkweb_Error');
   delete_option('nkweb_code_in_head');
+  delete_option('nkweb_ignore');
 }
 
 function admin_init_NKgoogleanalytics() {
@@ -89,6 +165,7 @@ function admin_init_NKgoogleanalytics() {
   register_setting('NKgoogleanalytics', 'nkweb_Enable_GA');
   register_setting('NKgoogleanalytics', 'nkweb_Error');
   register_setting('NKgoogleanalytics', 'nkweb_code_in_head');
+  register_setting('NKgoogleanalytics', 'nkweb_ignore');
 }
 
 function admin_menu_NKgoogleanalytics() { 
@@ -231,14 +308,9 @@ if (is_admin()) {
   add_action('admin_menu', 'admin_menu_NKgoogleanalytics');
 }
 
-if(get_option('nkweb_code_in_head')=="true"){
-  $location = "wp_head";
-}else{
-  $location = "wp_footer";
-}
 
 if (!is_admin()) { 
-  add_action($location, 'NKgoogleanalytics'); 
+    add_action('init', 'nk_evaluation',10);
 }  
 
 if(get_option('nkweb_track_login_and_register')=="true"){

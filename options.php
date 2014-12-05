@@ -1,13 +1,30 @@
-<div class="wrap">
-<h2>NK Google Analytics settings</h2>
+<?php
 
+defined('ABSPATH') or die("No script kiddies please!");
 
-<div style="width: 60%;  float: left;">
-<form method="post" action="options.php">
-<?php wp_nonce_field('update-options'); ?>
-<?php settings_fields('NKgoogleanalytics'); ?>
+function field_to_ignore() {
 
-<?php 
+ 	$options  = get_option('nkweb_ignore');
+ 
+	$field_value   = isset( $options['ignore_admin_area'] ) ? $options['ignore_admin_area'] : '';
+
+	
+	global $wp_roles;
+	
+	foreach( $wp_roles->roles as $role => $role_info ) {
+		$do_not_track['ignore_role_' . $role] = sprintf( __( 'Ignore %s when logged in', 'wp-google-analytics' ), rtrim( $role_info['name'], 's' ) );
+	}
+	foreach( $do_not_track as $id => $label ) {
+		$field_value   = isset( $options[$id] ) ? $options[$id] : '';
+		$checked='';
+		if($field_value=="true"){$checked= "checked";} 
+		echo '<label for="nkweb_ignore_' . $id . '">';
+		echo '<input id="nkweb_ignore_' . $id . '" type="checkbox" name="nkweb_ignore[' . $id . ']" value="true" '.$checked.'/>';
+		echo '&nbsp;&nbsp;' . $label;
+		echo '</label><br />';
+	}
+}
+
 
 	$nkweb_Error = get_option('nkweb_Error');
 	$error = "";
@@ -64,130 +81,148 @@
 			$error="Seems that you wrote only your Google Analytics ID in custom code, you can write it in \"Google Analytics ID\" field and turn off custom tracking code.";
 		}
 	}
-	
+
 	if(!get_option('nkweb_code_in_head')){
 		update_option( "nkweb_code_in_head", "true" );
 	}
-
-if($error != ""){
-
 ?>
-<div id="setting-error-settings_updated" class="updated settings-error"> 
-	<p><strong><?php echo $error; ?></strong></p>
+<div class="nk-main">
+	<div class="nk-main-container">
+
+		<h2>NK Google Analytics settings</h2>
+
+		<div style="">
+			<form name="myform" class="myform" action="options.php" method="post" enctype="multipart/form-data">
+
+				<div id="tabs-container">
+				    <ul class="tabs-menu">
+				        <li class="current"><a href="#basic">Basic</a></li>
+				        <li><a href="#more-options">More options</a></li>	        
+				    </ul>
+				    <div class="tab">
+				        <div id="basic" class="tab-content">
+				        	<label class="nk-label" for="nkweb_id">Google Analytics ID:</label>
+				            <input type="text" name="nkweb_id" value="<?php echo get_option('nkweb_id'); ?>" />
+				        </div>
+				        <div id="more-options" class="tab-content">
+				            <table class="form-table">
+								<tr valign="top">
+								<th scope="row">Google Analytics Type</th>
+								<td>
+									<input type="radio" name="nkweb_Universal_Analytics" value="true" <?php if (get_option('nkweb_Universal_Analytics') == "true"){ echo "checked "; } ?>> Universal Analytics<br>
+									<input type="radio" name="nkweb_Universal_Analytics" value="false"<?php if (get_option('nkweb_Universal_Analytics') == "false"){ echo "checked "; } ?>>  Classic Analytics<br>	
+								</td>	
+								</tr>
+
+								<tr valign="top">
+								<th scope="row">Domain :<br><small>(Only Universal analytics)</small></th>
+								<td><input type="text" name="nkweb_Domain" value="<?php echo get_option('nkweb_Domain'); ?>" /></td>
+								</tr>
+
+								<tr valign="top">
+								<th scope="row">Enable Display Advertising (Remarketing) :</th>
+								<td>
+									<input type="radio" name="nkweb_Display_Advertising" value="true" <?php if (get_option('nkweb_Display_Advertising') == "true"){ echo "checked "; } ?>> Yes<br>
+									<input type="radio" name="nkweb_Display_Advertising" value="false"<?php if (get_option('nkweb_Display_Advertising') == "false"){ echo "checked "; } ?>>  No <br>	
+								</td>	
+								</tr>
+
+								<tr valign="top">
+								<th scope="row">Track login and register page</th>
+								<td>
+									<input type="radio" name="nkweb_track_login_and_register" value="true" <?php if (get_option('nkweb_track_login_and_register') == "true"){ echo "checked "; } ?>> Yes<br>
+									<input type="radio" name="nkweb_track_login_and_register" value="false"<?php if (get_option('nkweb_track_login_and_register') == "false"){ echo "checked "; } ?>>  No<br>	
+								</td>	
+								</tr>
+
+								<tr valign="top">
+								<th scope="row">Ignore logged users by role</th>
+								<td>
+									<?php 
+										echo field_to_ignore();
+									?>
+								</td>	
+								</tr>
+
+								<tr valign="top">
+								<th scope="row">Use custom Google Analytics tracking code</th>
+								<td>
+									<input type="radio" name="nkweb_Use_Custom" value="true" <?php if (get_option('nkweb_Use_Custom') == "true"){ echo "checked "; } ?>> Yes<br>
+									<input type="radio" name="nkweb_Use_Custom" value="false"<?php if (get_option('nkweb_Use_Custom') == "false"){ echo "checked "; } ?>>  No <br>	
+								</td>	
+								</tr>
+
+								<tr valign="top">
+								<th scope="row">Custom Google Analytics tracking code</small></th>
+								<td><textarea name="nkweb_Custom_Code" ><?php echo get_option('nkweb_Custom_Code'); ?></textarea>
+								</tr>
+
+								<tr valign="top">
+								<th scope="row">Tracking code location</th>
+								<td>
+									<input type="radio" name="nkweb_code_in_head" value="true" <?php if (get_option('nkweb_code_in_head') == "true"){ echo "checked "; } ?>> Head<br>
+									<input type="radio" name="nkweb_code_in_head" value="false"<?php if (get_option('nkweb_code_in_head') == "false"){ echo "checked "; } ?>>  End of the page<br>	
+								</td>	
+								</tr>
+
+
+
+								<tr valign="top">
+								<th scope="row">NK Google Analytics Status</th>
+								<td>
+									<input type="radio" name="nkweb_Enable_GA" value="true" <?php if (get_option('nkweb_Enable_GA') == "true"){ echo "checked "; } ?>> On<br>
+									<input type="radio" name="nkweb_Enable_GA" value="false"<?php if (get_option('nkweb_Enable_GA') == "false"){ echo "checked "; } ?>>  Off <br>	
+								</td>	
+								</tr>
+
+
+								</table>
+
+				        </div>	        
+				    </div>
+				</div>				
+				<?php				
+					wp_nonce_field('update-options');
+					settings_fields('NKgoogleanalytics');
+				?>
+				<p class="submit">
+					<input type="submit" class="button-primary" value="Save changes">
+				</p>
+
+				
+
+			
+			</form>
+		</div>
+	</div>
+	<div class="nk-sidebar">
+
+		<?php 
+			if($error != ""){
+		?>
+			<div id="setting-error-settings_updated" class="error settings-error"> 
+				<p><strong><?php echo $error; ?></strong></p>
+			</div>
+			
+		<?php 
+			}
+		?>
+
+		<p>If don't know how to setup the plugin, just add Google Analytics ID and press "Save Changes", the default settings works in the most cases.</p>
+		<p>Remember, if you don't have an Google Analytics ID, you need to go to <a href="http://www.google.com/analytics">Google Analytics</a>, create an account and get the code (Similar to UA-0000000-0)</p>	
+		<p>I am very glad that you like this plugin, i will appreciate a lot if you want to make a donation. Thank you.</p>
+		
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="hosted_button_id" value="CUC2VE9F3LADU">
+		<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+		<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+		</form>
+		
+		<a target="_blank" href="http://www.wordpress.org/support/view/plugin-reviews/nk-google-analytics#postform">Thank you for review this plugin, with your help I can improve it</a>
+		<br>
+		<br>
+		<br>
+		<a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome">Feel free to test these tools to grow your website traffic for free</a>
+	</div>
 </div>
-
-<?php 
-	}
-?>
-
-<table class="form-table">
-<tr valign="top">
-<th scope="row">Google Analytics ID:</th>
-<td><input type="text" name="nkweb_id" value="<?php echo get_option('nkweb_id'); ?>" /></td>
-</tr>
-
-<tr valign="top">
-<th scope="row">Google Analytics Type</th>
-<td>
-	<input type="radio" name="nkweb_Universal_Analytics" value="true" <?php if (get_option('nkweb_Universal_Analytics') == "true"){ echo "checked "; } ?>> Universal Analytics<br>
-	<input type="radio" name="nkweb_Universal_Analytics" value="false"<?php if (get_option('nkweb_Universal_Analytics') == "false"){ echo "checked "; } ?>>  Classic Analytics<br>	
-</td>	
-</tr>
-
-<tr valign="top">
-<th scope="row">Domain :<br><small>(Only Universal analytics)</small></th>
-<td><input type="text" name="nkweb_Domain" value="<?php echo get_option('nkweb_Domain'); ?>" /></td>
-</tr>
-
-<tr valign="top">
-<th scope="row">Enable Display Advertising (Remarketing) :</th>
-<td>
-	<input type="radio" name="nkweb_Display_Advertising" value="true" <?php if (get_option('nkweb_Display_Advertising') == "true"){ echo "checked "; } ?>> Yes<br>
-	<input type="radio" name="nkweb_Display_Advertising" value="false"<?php if (get_option('nkweb_Display_Advertising') == "false"){ echo "checked "; } ?>>  No <br>	
-</td>	
-</tr>
-
-<tr valign="top">
-<th scope="row">Track login and register page</th>
-<td>
-	<input type="radio" name="nkweb_track_login_and_register" value="true" <?php if (get_option('nkweb_track_login_and_register') == "true"){ echo "checked "; } ?>> Yes<br>
-	<input type="radio" name="nkweb_track_login_and_register" value="false"<?php if (get_option('nkweb_track_login_and_register') == "false"){ echo "checked "; } ?>>  No<br>	
-</td>	
-</tr>
-
-<tr valign="top">
-<th scope="row">Use custom Google Analytics tracking code</th>
-<td>
-	<input type="radio" name="nkweb_Use_Custom" value="true" <?php if (get_option('nkweb_Use_Custom') == "true"){ echo "checked "; } ?>> Yes<br>
-	<input type="radio" name="nkweb_Use_Custom" value="false"<?php if (get_option('nkweb_Use_Custom') == "false"){ echo "checked "; } ?>>  No <br>	
-</td>	
-</tr>
-
-<tr valign="top">
-<th scope="row">Custom Google Analytics tracking code</small></th>
-<td><textarea name="nkweb_Custom_Code" ><?php echo get_option('nkweb_Custom_Code'); ?></textarea>
-</tr>
-
-<tr valign="top">
-<th scope="row">Tracking code location</th>
-<td>
-	<input type="radio" name="nkweb_code_in_head" value="true" <?php if (get_option('nkweb_code_in_head') == "true"){ echo "checked "; } ?>> Head<br>
-	<input type="radio" name="nkweb_code_in_head" value="false"<?php if (get_option('nkweb_code_in_head') == "false"){ echo "checked "; } ?>>  End of the page<br>	
-</td>	
-</tr>
-
-
-
-<tr valign="top">
-<th scope="row">NK Google Analytics Status</th>
-<td>
-	<input type="radio" name="nkweb_Enable_GA" value="true" <?php if (get_option('nkweb_Enable_GA') == "true"){ echo "checked "; } ?>> On<br>
-	<input type="radio" name="nkweb_Enable_GA" value="false"<?php if (get_option('nkweb_Enable_GA') == "false"){ echo "checked "; } ?>>  Off <br>	
-</td>	
-</tr>
-
-
-</table>
-<input type="hidden" name="action" value="update" />
-<p class="submit">
-	<input type="submit" class="button-primary" value="<?php _e('Save changes') ?>" />
-</p>
-</form>
-</div>
-<div style="width: 40%;  float: left;">
-<p>
-If don't know how to setup the plugin, just add Google Analytics ID and press "Save Changes", the default settings works in the most cases.
-</p><p>
-Remember, if you don't have an Google Analytics ID, you need to go to <a href="http://www.google.com/analytics">Google Analytics</a>, create an account and get the code (Similar to UA-0000000-0)
-</p>
-<br>
-<br>
-<p>
-I am very glad that you like this plugin, i will appreciate a lot if you want to make a donation. Thank you.
-</p>
-<br>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="CUC2VE9F3LADU">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-<br>
-<br>
-<br>
-<a target="_blank" href="http://www.wordpress.org/support/view/plugin-reviews/nk-google-analytics#postform">
-Thank you for review this plugin, with your help I can improve it
-</a>
-<br>
-<br>
-<br>
-<a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome">Feel free to test these tools to grow your website traffic for free</a>
-
-</div>
-
-
-</div> 
-<br>
-<br>
-<br>
