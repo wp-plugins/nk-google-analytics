@@ -30,7 +30,7 @@ if (!defined('WP_PLUGIN_DIR'))
  */
 function nk_custom_links($links) {  
   $sumome_link = '<a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome">Free tools</a>'; 
-  $donate_link = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU">Donate</a>'; 
+  $donate_link = '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU">Donate</a>'; 
   $settings_link = '<a href="options-general.php?page=NKgoogleanalytics">Settings</a>'; 
   array_unshift($links, $sumome_link); 
   array_unshift($links, $donate_link); 
