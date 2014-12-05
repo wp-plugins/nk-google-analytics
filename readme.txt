@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: GA code, google nalytics, javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, Google Analytics in WordPress, universal analytics, WordPress Google Analytics, WP Google Analytics, WP Google Analytics Plugin
 Requires at least: 3
 Tested up to: 4.0.1
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,6 +121,9 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 3. NK Google Analytics more settings page.
 
 == Changelog ==
+
+= 1.4.1 = 
+* Minor fix
 
 = 1.4 = 
 * Improved interface
