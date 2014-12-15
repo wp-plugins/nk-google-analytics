@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: GA code, google nalytics, javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, Google Analytics in WordPress, universal analytics, WordPress Google Analytics, WP Google Analytics, WP Google Analytics Plugin
 Requires at least: 3
 Tested up to: 4.0.1
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
