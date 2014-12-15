@@ -122,6 +122,9 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 
 == Changelog ==
 
+= 1.4.2 = 
+* Minor fix, removed some code (https://wordpress.org/support/topic/beware-12)
+
 = 1.4.1 = 
 * Minor fix
 
