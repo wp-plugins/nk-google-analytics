@@ -185,7 +185,7 @@ function field_to_ignore() {
 					wp_nonce_field('update-options');
 					settings_fields('NKgoogleanalytics');
 				?>
-				<p class="submit">
+				<p class="nk-submit">
 					<input type="submit" class="button-primary" value="Save changes">
 				</p>
 

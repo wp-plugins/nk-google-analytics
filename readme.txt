@@ -1,18 +1,16 @@
 === NK Google Analytics ===
 Contributors: marodok
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU
-Tags: GA code, google nalytics, javascript, google, tracking, analytics, tracking code, display advertising, remarketing analytics, universal analytics, Google Analytics in WordPress, universal analytics, WordPress Google Analytics, WP Google Analytics, WP Google Analytics Plugin
+Tags: GA code, google analytics, analytics, tracking code, display advertising, remarketing analytics, universal analytics, Google Analytics in WordPress, WordPress Google Analytics
 Requires at least: 3
-Tested up to: 4.0.1
-Stable tag: 1.4.2
+Tested up to: 4.1
+Stable tag: 1.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 NK Google Analytics for Wordpress adds necessary javascript to enable Google Analytics tracking on your website.
 
 == Description ==
-
-[**Get even more sharing tools at SumoMe.com**](http://www.marodok.com/link-manager.php?to=sumome)
 
 Need Google Analytics on your website? NK Google Analytics adds the required javascript to track your website, it supports <b>Classic</b>, <b>Universal</b> and <b>Remarketing</b> Google Analytics tracking code. 
 
@@ -23,7 +21,6 @@ For more information about Display Advertising
 [Support Display Advertising](https://support.google.com/analytics/answer/2444872?hl=en&utm_id=ad)
 
 NK Google Analytics its simple, just add your Google Analytics ID and click "Save changes"
-
 
 
 == Features == 
@@ -49,8 +46,6 @@ Please take the time to rate this plugin, let me and others to know about your e
 
 If you like the plugin please [Donate here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU). 
 
-
-[**Feel free to test these tools to grow your website traffic**](http://www.marodok.com/link-manager.php?to=sumome)
 
 == Installation ==
 
@@ -115,12 +110,16 @@ Yes.
 This option can "turn off" the plugin, if is set to "on" the plugin will print tracking code in the web page, if not, the plugin will not insert the tracking code.
 
 == Screenshots ==
-
 1. Modified settings panel with NK Google Analytics.
 2. NK Google Analytics basic settings page.
 3. NK Google Analytics more settings page.
 
 == Changelog ==
+
+
+= 1.4.3 = 
+* Minor fix, change in styles (https://wordpress.org/support/topic/avoid-css-collision-please)
+* Some changes (https://wordpress.org/support/view/plugin-reviews/nk-google-analytics)
 
 = 1.4.2 = 
 * Minor fix, removed some code (https://wordpress.org/support/topic/beware-12)
