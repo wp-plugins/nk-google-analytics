@@ -3,7 +3,7 @@
 Plugin Name: NK Google Analytics
 Plugin URI: http://www.marodok.com/nk-google-analytics/
 Description: Add <a href="http://www.google.com/analytics/">Google Analytics</a> javascript code on all pages.
-Version: 1.4.3
+Version: 1.4.4
 Author: Manfred Rodríguez
 Author URI: http://www.marodok.com
 Text Domain: NKgoogleanalytics
@@ -29,11 +29,9 @@ if (!defined('WP_PLUGIN_DIR'))
  * Custom links
  */
 function nk_custom_links($links) 
-{
-    $sumome_link = '<a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome">Free tools</a>'; 
+{   
     $donate_link = '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU">Donate</a>'; 
-    $settings_link = '<a href="options-general.php?page=NKgoogleanalytics">Settings</a>'; 
-    array_unshift($links, $sumome_link); 
+    $settings_link = '<a href="options-general.php?page=NKgoogleanalytics">Settings</a>';     
     array_unshift($links, $donate_link); 
     array_unshift($links, $settings_link); 
     return $links; 
@@ -176,8 +174,7 @@ function admin_init_NKgoogleanalytics()
 
 function admin_menu_NKgoogleanalytics() 
 { 
-  add_options_page('NK Google Analytics', 'NK Google Analytics', 'manage_options', 'NKgoogleanalytics', 'options_page_NKgoogleanalytics'); 
-  add_options_page('Plugins by SumoMe', 'Plugins by SumoMe', 'manage_options', 'plugins-by-sumome', 'sumome_contents'); 
+  add_options_page('NK Google Analytics', 'NK Google Analytics', 'manage_options', 'NKgoogleanalytics', 'options_page_NKgoogleanalytics');   
 }
 
 
@@ -281,37 +278,6 @@ function NKgoogleanalytics()
             }
         }
         echo $tk;
-    }
-}
-
-
-if (!function_exists('sumome_contents')) {
-    function sumome_contents()
-    {
-        ?>
-        <div class="wrap">
-        <h2>Plugins by SumoMe</h2>
-        <div class="postbox">
-          <h3 class="hndle" style="padding: 7px;  font-size: 15px;"><span>Plugins to help your blog:</span></h3>
-          <div class="inside">
-            <style>.has_ifr iframe{vertical-align: bottom;}</style>
-            <div class="row has_ifr">
-              <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-share">Share</a> - Get more traffic to your site with these super easy to setup share buttons!</h4>
-              <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-image-sharer">Image Sharer</a>- Get your images shared way more often</h4>
-              <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-highlighter">Highlighter</a>- Increase your content sharing significantly</h4>
-              <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-list-builder">List Builder</a>- Double your daily email list growth </h4>
-              <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-scroll-box">Scroll Box</a> - Ask for an email address at the right time</h4>
-              <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-heat-maps">Heat Maps</a>- See where your website visitors are clicking (or not)</h4>
-              <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-content-analytics">Content Analytics</a>-  Find out what content your readers are reading on your site - and where they stop</h4>
-              <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-smart-bar">Smart Bar</a> - An easy and non-intrusive way to ask people to join your email list</h4>
-              <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-leads">Leads</a>- Offer free incentives to increase your daily email signups </h4>
-              <h4><a target="_blank" href="http://www.marodok.com/link-manager.php?to=sumome-contact-form">Contact Form</a>- Make it easy for customers to talk to you</h4>
-            </div>
-          </div>
-        </div>
-        <div class="row"></div>
-        </div>    
-        <?php
     }
 }
 

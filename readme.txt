@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: GA code, google analytics, analytics, tracking code, display advertising, remarketing analytics, universal analytics, Google Analytics in WordPress, WordPress Google Analytics
 Requires at least: 3
 Tested up to: 4.1
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -116,6 +116,9 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 
 == Changelog ==
 
+
+= 1.4.4 = 
+* Remove "free tools" links
 
 = 1.4.3 = 
 * Minor fix, change in styles (https://wordpress.org/support/topic/avoid-css-collision-please)
