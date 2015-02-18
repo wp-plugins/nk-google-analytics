@@ -97,17 +97,17 @@ function field_to_ignore() {
 		<div style="">
 			<form name="myform" class="myform" action="options.php" method="post" enctype="multipart/form-data">
 
-				<div id="tabs-container">
-				    <ul class="tabs-menu">
+				<div id="nk-tabs-container">
+				    <ul class="nk-tabs-menu">
 				        <li class="current"><a href="#basic">Basic</a></li>
 				        <li><a href="#more-options">More options</a></li>
 				    </ul>
 				    <div class="tab">
-				        <div id="basic" class="tab-content">
+				        <div id="basic" class="nk-tab-content">
 				        	<label class="nk-label" for="nkweb_id">Google Analytics ID:</label>
 				            <input type="text" name="nkweb_id" value="<?php echo get_option('nkweb_id'); ?>" />
 				        </div>
-				        <div id="more-options" class="tab-content">
+				        <div id="more-options" class="nk-tab-content">
 				            <table class="form-table">
 								<tr valign="top">
 								<th scope="row">Google Analytics Type</th>

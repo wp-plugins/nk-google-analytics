@@ -117,6 +117,9 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 == Changelog ==
 
 
+= 1.4.6 =
+* Fix CSS Conflict (https://wordpress.org/support/topic/admin-css-conflict?replies=1)
+
 = 1.4.5 =
 * Custom code bug fix
 
