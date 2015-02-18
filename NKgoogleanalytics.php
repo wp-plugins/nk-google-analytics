@@ -3,7 +3,7 @@
 Plugin Name: NK Google Analytics
 Plugin URI: http://www.marodok.com/nk-google-analytics/
 Description: Add <a href="http://www.google.com/analytics/">Google Analytics</a> javascript code on all pages.
-Version: 1.4.4
+Version: 1.4.5
 Author: Manfred Rodríguez
 Author URI: http://www.marodok.com
 Text Domain: NKgoogleanalytics
@@ -73,16 +73,16 @@ function nk_evaluation()
     }
 
     if (is_user_logged_in()) {
-      
-        $current_user   = wp_get_current_user();       
+
+        $current_user   = wp_get_current_user();
         $user_role      = $current_user->roles[0];
-      
+
 
         $if = 'if( ';
         $a  = 1;
         $ignored_roles          = get_option('nkweb_ignore');
         $total_ignored_roles    = count(get_option('nkweb_ignore'));
-      
+
         if (is_array($ignored_roles) && $total_ignored_roles > 0) {
 
             foreach ( $ignored_roles as $role => $ignore) {
@@ -92,21 +92,21 @@ function nk_evaluation()
 
                 if($ignore == 'true')
                     $if .= '("'.$user_role.'"=="'.$roleName.'")';
-                
+
                 if($a<$total_ignored_roles)
                     $if .= ' || ';
-                
+
                 ++$a;
             }
-            
+
             $if .= ') return; else add_action('.$location.', "NKgoogleanalytics"); ';
-            eval($if);      
+            eval($if);
 
         } else {
-            add_action($location, 'NKgoogleanalytics');         
+            add_action($location, 'NKgoogleanalytics');
         }
     } else {
-        add_action($location, 'NKgoogleanalytics'); 
+        add_action($location, 'NKgoogleanalytics');
     }
 }
 

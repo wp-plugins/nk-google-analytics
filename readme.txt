@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: GA code, google analytics, analytics, tracking code, display advertising, remarketing analytics, universal analytics, Google Analytics in WordPress, WordPress Google Analytics
 Requires at least: 3
 Tested up to: 4.1
-Stable tag: 1.4.4
+Stable tag: 1.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -117,86 +117,89 @@ This option can "turn off" the plugin, if is set to "on" the plugin will print t
 == Changelog ==
 
 
-= 1.4.4 = 
+= 1.4.5 =
+* Custom code bug fix
+
+= 1.4.4 =
 * Remove "free tools" links
 
-= 1.4.3 = 
+= 1.4.3 =
 * Minor fix, change in styles (https://wordpress.org/support/topic/avoid-css-collision-please)
 * Some changes (https://wordpress.org/support/view/plugin-reviews/nk-google-analytics)
 
-= 1.4.2 = 
+= 1.4.2 =
 * Minor fix, removed some code (https://wordpress.org/support/topic/beware-12)
 
-= 1.4.1 = 
+= 1.4.1 =
 * Minor fix
 
-= 1.4 = 
+= 1.4 =
 * Improved interface
 * Role level control for tracking code (https://wordpress.org/support/topic/dont-want-to-track-logged-in-admin-users, https://wordpress.org/support/topic/suggestion-non-include-code-as-administrator)
 
-= 1.3.9 = 
+= 1.3.9 =
 * Minor code fix (https://wordpress.org/support/topic/n-between-body-and-script-tag) 
 
-= 1.3.8 = 
+= 1.3.8 =
 * Minor code fixes
 
-= 1.3.7 = 
+= 1.3.7 =
 * Changes in menu
 * Fixed HTTPS (https://wordpress.org/support/topic/ssl-option-load-scripts-from-secure-url)
 
-= 1.3.6 = 
+= 1.3.6 =
 * Changes in menu
 * Added links for sumome
 
-= 1.3.5 = 
+= 1.3.5 =
 * Corrected a conflict with plugin "wpMandrill"
 
-= 1.3.4 = 
+= 1.3.4 =
 * Corrected a conflict with plugin "janrain social sharing"
 
-= 1.3.3 = 
+= 1.3.3 =
 * login and register page tracking fix
 
-= 1.3.2 = 
+= 1.3.2 =
 * Display Advertising "failover" fix (thanks to user j_shb)
 * Changes to Enable demographics in Universal Analytics (thanks to user Levi_r)
 * Added option to add tracking code to login and register page
 
-= 1.3.1 = 
+= 1.3.1 =
 * Fixes
 
-= 1.3 = 
+= 1.3 =
 * Added option to select tracking code location (head or end of page)
 * Minor fixes
 
-= 1.2.9 = 
+= 1.2.9 =
 * Removed an error_log call, so the log file will not grow more
 * Added an index.html file in plugin's directory to avoid to crawlers to index it
 
-= 1.2.8 = 
+= 1.2.8 =
 * Upgraded some validations and fixed some minor bugs
 
-= 1.2.7 = 
+= 1.2.7 =
 * Tracking issue fix with remarketing tracking code
 
-= 1.2.6 = 
+= 1.2.6 =
 * New on/off option.
 * Retyped and reordered some option for improve reading and comprehension of options.
 
-= 1.2.5 = 
+= 1.2.5 =
 * Custom code fix.
 
-= 1.2.4 = 
+= 1.2.4 =
 * Update documentation and FAQ.
 * Added Universal Analytics domain verification.
 
-= 1.2.3 = 
+= 1.2.3 =
 * Fix some minor bugs.
 
-= 1.2.2 = 
+= 1.2.2 =
 * Added support to custom Google Analytics tracking code.
 
-= 1.2.1 = 
+= 1.2.1 =
 * Google Analytics ID setting verification.
 
 = 1.2 =
