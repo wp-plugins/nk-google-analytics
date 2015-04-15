@@ -99,13 +99,32 @@ function field_to_ignore() {
 
 				<div id="nk-tabs-container">
 				    <ul class="nk-tabs-menu">
-				        <li class="current"><a href="#basic">Basic</a></li>
-				        <li><a href="#more-options">More options</a></li>
+				        <li class="current"><a href="#basic"><?php _e( 'Basic', 'NKgoogleanalytics' );?></a></li>
+				        <li><a href="#eu-options"><?php _e( 'EU Cookie Law', 'NKgoogleanalytics' );?></a></li>
+				        <li><a href="#more-options"><?php _e( 'More options', 'NKgoogleanalytics' );?></a></li>
 				    </ul>
 				    <div class="tab">
 				        <div id="basic" class="nk-tab-content">
 				        	<label class="nk-label" for="nkweb_id">Google Analytics ID:</label>
 				            <input type="text" name="nkweb_id" value="<?php echo get_option('nkweb_id'); ?>" />
+				        </div>
+				        <div id="eu-options" class="nk-tab-content">
+				            <table class="form-table">
+								<tr valign="top">
+								<th scope="row">Cookieless tracking with fingerprint.js<br><small>(Only Universal analytics)</small></th>
+								<td>
+									<input type="radio" name="nkweb_fingerprintjs" value="true" <?php if (get_option('nkweb_fingerprintjs') == "true"){ echo "checked "; } ?>> Yes<br>
+									<input type="radio" name="nkweb_fingerprintjs" value="false"<?php if (get_option('nkweb_fingerprintjs') == "false"){ echo "checked "; } ?>>  No<br>
+								</td>
+								</tr>
+								<tr valign="top">
+								<th scope="row">Anonymize ip<br><small>(Only Universal analytics)</small></th>
+								<td>
+									<input type="radio" name="nkweb_anonymizeip" value="true" <?php if (get_option('nkweb_anonymizeip') == "true"){ echo "checked "; } ?>> Yes<br>
+									<input type="radio" name="nkweb_anonymizeip" value="false"<?php if (get_option('nkweb_anonymizeip') == "false"){ echo "checked "; } ?>>  No<br>
+								</td>
+								</tr>
+							</table>
 				        </div>
 				        <div id="more-options" class="nk-tab-content">
 				            <table class="form-table">
@@ -113,7 +132,7 @@ function field_to_ignore() {
 								<th scope="row">Google Analytics Type</th>
 								<td>
 									<input type="radio" name="nkweb_Universal_Analytics" value="true" <?php if (get_option('nkweb_Universal_Analytics') == "true"){ echo "checked "; } ?>> Universal Analytics<br>
-									<input type="radio" name="nkweb_Universal_Analytics" value="false"<?php if (get_option('nkweb_Universal_Analytics') == "false"){ echo "checked "; } ?>>  Classic Analytics<br>	
+									<input type="radio" name="nkweb_Universal_Analytics" value="false"<?php if (get_option('nkweb_Universal_Analytics') == "false"){ echo "checked "; } ?>>  Classic Analytics<br>
 								</td>
 								</tr>
 
@@ -123,10 +142,10 @@ function field_to_ignore() {
 								</tr>
 
 								<tr valign="top">
-								<th scope="row">Enable Display Advertising (Remarketing) :</th>
+								<th scope="row">Enable Display Advertising :<br><small>(Remarketing)</small></th>
 								<td>
 									<input type="radio" name="nkweb_Display_Advertising" value="true" <?php if (get_option('nkweb_Display_Advertising') == "true"){ echo "checked "; } ?>> Yes<br>
-									<input type="radio" name="nkweb_Display_Advertising" value="false"<?php if (get_option('nkweb_Display_Advertising') == "false"){ echo "checked "; } ?>>  No <br>	
+									<input type="radio" name="nkweb_Display_Advertising" value="false"<?php if (get_option('nkweb_Display_Advertising') == "false"){ echo "checked "; } ?>>  No <br>
 								</td>
 								</tr>
 
@@ -134,7 +153,7 @@ function field_to_ignore() {
 								<th scope="row">Track login and register page</th>
 								<td>
 									<input type="radio" name="nkweb_track_login_and_register" value="true" <?php if (get_option('nkweb_track_login_and_register') == "true"){ echo "checked "; } ?>> Yes<br>
-									<input type="radio" name="nkweb_track_login_and_register" value="false"<?php if (get_option('nkweb_track_login_and_register') == "false"){ echo "checked "; } ?>>  No<br>	
+									<input type="radio" name="nkweb_track_login_and_register" value="false"<?php if (get_option('nkweb_track_login_and_register') == "false"){ echo "checked "; } ?>>  No<br>
 								</td>
 								</tr>
 
@@ -151,7 +170,7 @@ function field_to_ignore() {
 								<th scope="row">Use custom Google Analytics tracking code</th>
 								<td>
 									<input type="radio" name="nkweb_Use_Custom" value="true" <?php if (get_option('nkweb_Use_Custom') == "true"){ echo "checked "; } ?>> Yes<br>
-									<input type="radio" name="nkweb_Use_Custom" value="false"<?php if (get_option('nkweb_Use_Custom') == "false"){ echo "checked "; } ?>>  No <br>	
+									<input type="radio" name="nkweb_Use_Custom" value="false"<?php if (get_option('nkweb_Use_Custom') == "false"){ echo "checked "; } ?>>  No <br>
 								</td>
 								</tr>
 
@@ -164,7 +183,7 @@ function field_to_ignore() {
 								<th scope="row">Tracking code location</th>
 								<td>
 									<input type="radio" name="nkweb_code_in_head" value="true" <?php if (get_option('nkweb_code_in_head') == "true"){ echo "checked "; } ?>> Head<br>
-									<input type="radio" name="nkweb_code_in_head" value="false"<?php if (get_option('nkweb_code_in_head') == "false"){ echo "checked "; } ?>>  End of the page<br>	
+									<input type="radio" name="nkweb_code_in_head" value="false"<?php if (get_option('nkweb_code_in_head') == "false"){ echo "checked "; } ?>>  End of the page<br>
 								</td>
 								</tr>
 
@@ -174,7 +193,7 @@ function field_to_ignore() {
 								<th scope="row">NK Google Analytics Status</th>
 								<td>
 									<input type="radio" name="nkweb_Enable_GA" value="true" <?php if (get_option('nkweb_Enable_GA') == "true"){ echo "checked "; } ?>> On<br>
-									<input type="radio" name="nkweb_Enable_GA" value="false"<?php if (get_option('nkweb_Enable_GA') == "false"){ echo "checked "; } ?>>  Off <br>	
+									<input type="radio" name="nkweb_Enable_GA" value="false"<?php if (get_option('nkweb_Enable_GA') == "false"){ echo "checked "; } ?>>  Off <br>
 								</td>
 								</tr>
 
@@ -201,7 +220,7 @@ function field_to_ignore() {
 		<?php
 			if($error != ""){
 		?>
-			<div id="setting-error-settings_updated" class="error settings-error"> 
+			<div id="setting-error-settings_updated" class="error settings-error">
 				<p><strong><?php echo $error; ?></strong></p>
 			</div>
 
@@ -209,9 +228,9 @@ function field_to_ignore() {
 			}
 		?>
 
-		<p>If don't know how to setup the plugin, just add Google Analytics ID and press "Save Changes", the default settings works in the most cases.</p>
-		<p>Remember, if you don't have an Google Analytics ID, you need to go to <a href="http://www.google.com/analytics">Google Analytics</a>, create an account and get the code (Similar to UA-0000000-0)</p>	
-		<p>I am very glad that you like this plugin, i will appreciate a lot if you want to make a donation. Thank you.</p>
+		<p><?php _e( 'If do not know how to setup the plugin, just add Google Analytics ID and press "Save Changes", the default settings works in the most cases.', 'NKgoogleanalytics' );?></p>
+		<p><?php _e( 'Remember, if you do not have an Google Analytics ID, you need to go to <a href="http://www.google.com/analytics">Google Analytics</a>, create an account and get the code (Similar to UA-0000000-0)', 'NKgoogleanalytics' );?></p>
+		<p><?php _e( 'I am very glad that you like this plugin, i will appreciate a lot if you want to make a donation. Thank you.', 'NKgoogleanalytics' );?></p>
 
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 		<input type="hidden" name="cmd" value="_s-xclick">

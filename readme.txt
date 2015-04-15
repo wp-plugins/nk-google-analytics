@@ -1,10 +1,10 @@
 === NK Google Analytics ===
 Contributors: marodok
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUC2VE9F3LADU
-Tags: GA code, google analytics, analytics, tracking code, display advertising, remarketing analytics, universal analytics, Google Analytics in WordPress, WordPress Google Analytics
+Tags: GA code, google analytics, analytics, tracking code, display advertising, remarketing analytics, universal analytics, Google Analytics in WordPress, WordPress Google Analytics, EU cookie law, fingerprint
 Requires at least: 3
-Tested up to: 4.1
-Stable tag: 1.4.5
+Tested up to: 4.1.1
+Stable tag: 1.4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,8 @@ NK Google Analytics its simple, just add your Google Analytics ID and click "Sav
 * No tracking for admin users logged-in
 * Track login and register page if you want to
 * Don't track logged users by role
+* Supports cookieless tracking using fingerprint.js
+* Can anonymize ip
 
 NK Google Analytics enables Google Analytics on all pages.
 
@@ -109,13 +111,22 @@ Yes.
 
 This option can "turn off" the plugin, if is set to "on" the plugin will print tracking code in the web page, if not, the plugin will not insert the tracking code.
 
+= How accurate is cookieless tracking using fingerprint.js?
+
+It is ~90% accurate. The next version fingerprint2.js will be even better, but it is still in development at https://github.com/Valve/fingerprintjs2
+
 == Screenshots ==
 1. Modified settings panel with NK Google Analytics.
 2. NK Google Analytics basic settings page.
-3. NK Google Analytics more settings page.
+3. NK Google Analytics EU Cookie Law support page.
+4. NK Google Analytics more settings page.
 
 == Changelog ==
 
+
+= 1.4.7 =
+* Added EU cookie law support (https://wordpress.org/support/topic/patchadd-eu-cookie-law-support). Thank you to javitury (https://wordpress.org/support/profile/javitury)
+* Minor code fixes
 
 = 1.4.6 =
 * Fix CSS Conflict (https://wordpress.org/support/topic/admin-css-conflict?replies=1)
