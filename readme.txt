@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: GA code, google analytics, analytics, tracking code, display advertising, remarketing analytics, universal analytics, Google Analytics in WordPress, WordPress Google Analytics, EU cookie law, fingerprint
 Requires at least: 3
 Tested up to: 4.1.1
-Stable tag: 1.4.7
+Stable tag: 1.4.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,9 @@ It is ~90% accurate. The next version fingerprint2.js will be even better, but i
 
 == Changelog ==
 
+= 1.4.8 =
+* Added missing file
+* Minor code fixes
 
 = 1.4.7 =
 * Added EU cookie law support (https://wordpress.org/support/topic/patchadd-eu-cookie-law-support). Thank you to javitury (https://wordpress.org/support/profile/javitury)

@@ -3,7 +3,7 @@
 Plugin Name: NK Google Analytics
 Plugin URI: http://www.marodok.com/nk-google-analytics/
 Description: Add <a href="http://www.google.com/analytics/">Google Analytics</a> javascript code on all pages.
-Version: 1.4.7
+Version: 1.4.8
 Author: Manfred Rodríguez
 Author URI: http://www.marodok.com
 Text Domain: NKgoogleanalytics
@@ -60,6 +60,7 @@ function add_assets()
     wp_enqueue_script('script_plugin',plugins_url( 'js/script.js' , __FILE__ ) );
 }
 add_action('admin_init','add_assets');
+
 
 function add_fingerprintjs()
 {
@@ -127,6 +128,7 @@ function activate_NKgoogleanalytics()
 {
 
     $domain = 'your-domain.com';
+
     if ($_SERVER['SERVER_NAME']) {
         $domain = $_SERVER['SERVER_NAME'];
     }
@@ -267,7 +269,6 @@ function NKgoogleanalytics()
                     $tk .= "   _gaq.push(['_trackEvent', 'tracking_script', 'loaded', 'dc.js', ,true]);\n";
                     $tk .= "  }\n";
                     $tk .= " };\n";
-
                     $tk .= "</script> \n";
 
                 } else {
@@ -279,9 +280,11 @@ function NKgoogleanalytics()
                     $tk .= "})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); \n";
 
                     $tk .= "ga('create', '" . $nkweb_id. "', '" . $Domain . "', {";
+
                     if ($nkweb_fingerprintjs=="true") {
                        $tk .= "'storage': 'none', 'clientId': new Fingerprint().get()";
                     }
+
                     $tk .= "}); \n";
 
                     if ($nkweb_anonymizeip=="true") {
@@ -293,11 +296,9 @@ function NKgoogleanalytics()
                     }
 
                     $tk .= "ga('send', 'pageview'); \n";
-
                     $tk .= "</script> \n";
 
                 }
-
             } else {
                 update_option( 'nkweb_Error', 'There is a problem with your Google Analytics ID' );
             }
@@ -357,13 +358,11 @@ register_activation_hook(__FILE__, 'activate_NKgoogleanalytics');
 register_deactivation_hook(__FILE__, 'deactive_NKgoogleanalytics');
 
 
-
 if (is_admin()) {
     //add_action('plugins_loaded', 'nk_load_textdomain');
     add_action('admin_init', 'admin_init_NKgoogleanalytics');
     add_action('admin_menu', 'admin_menu_NKgoogleanalytics');
 }
-
 
 if (!is_admin()) {
     add_action('init', 'nk_evaluation',10);
@@ -372,6 +371,7 @@ if (!is_admin()) {
 if(get_option('nkweb_track_login_and_register')=="true"){
   add_action( 'login_head', 'NKgoogleanalytics');
 }
+
 if(nk_is_login_page() && get_option('nkweb_track_login_and_register')=="true"){
   add_action( 'login_head', 'NKgoogleanalytics');
 }
