@@ -111,7 +111,7 @@ Yes.
 
 This option can "turn off" the plugin, if is set to "on" the plugin will print tracking code in the web page, if not, the plugin will not insert the tracking code.
 
-= How accurate is cookieless tracking using fingerprint.js?
+= How accurate is cookieless tracking using fingerprint.js? =
 
 It is ~90% accurate. The next version fingerprint2.js will be even better, but it is still in development at https://github.com/Valve/fingerprintjs2
 
