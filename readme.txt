@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: GA code, google analytics, analytics, tracking code, display advertising, remarketing analytics, universal analytics, Google Analytics in WordPress, WordPress Google Analytics, EU cookie law, fingerprint
 Requires at least: 3
 Tested up to: 4.2.2
-Stable tag: 1.4.9
+Stable tag: 1.4.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ NK Google Analytics for Wordpress adds necessary javascript to enable Google Ana
 
 == Description ==
 
-Need Google Analytics on your website? NK Google Analytics adds the required javascript to track your website, it supports <b>Classic</b>, <b>Universal</b> and <b>Remarketing</b> Google Analytics tracking code. 
+Need Google Analytics on your website? NK Google Analytics adds the required javascript to track your website, it supports <b>Classic</b>, <b>Universal</b> and <b>Remarketing</b> Google Analytics tracking code.
 
 For more information about Google Analytics visit:
 [Google Analytics](http://www.google.com/analytics)
@@ -23,7 +23,7 @@ For more information about Display Advertising
 NK Google Analytics its simple, just add your Google Analytics ID and click "Save changes"
 
 
-== Features == 
+== Features ==
 
 * Supports standard Google Analytics tracking via the latest async tracking methods (faster and more reliable than the older ga.js tracking method)
 * Inserts your tracking code on all theme pages
@@ -124,6 +124,10 @@ It is ~90% accurate. The next version fingerprint2.js will be even better, but i
 4. NK Google Analytics more settings page.
 
 == Changelog ==
+
+= 1.4.10 =
+* Added missing file
+* Minor code fixes
 
 = 1.4.9 =
 * Added settings for other values, dimensions and metrics. Thank you to javitury (https://wordpress.org/support/profile/javitury)
