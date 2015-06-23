@@ -3,7 +3,7 @@
 Plugin Name: NK Google Analytics
 Plugin URI: http://www.marodok.com/nk-google-analytics/
 Description: Add <a href="http://www.google.com/analytics/">Google Analytics</a> javascript code on all pages.
-Version: 1.4.8
+Version: 1.4.9
 Author: Manfred Rodríguez
 Author URI: http://www.marodok.com
 Text Domain: NKgoogleanalytics
@@ -72,11 +72,35 @@ if (get_option('nkweb_fingerprintjs')=="true" && get_option('nkweb_Universal_Ana
 }
 
 /**
+ *  Get page or post id
+ */
+function nk_get_post_id() {
+    $post_id = "false";
+
+    if ( is_page() ) {
+	$post_id = get_queried_object_id();
+    } else if ( is_single() ) {
+	$post_id = get_the_ID();
+    }
+
+    return $post_id;
+}
+
+/**
  *  Get evaluation code
  */
 function nk_evaluation()
 {
-    if (get_option('nkweb_code_in_head')=="true") {
+    $post_id = nk_get_post_id();
+
+    if ($post_id != "false") {
+	$nkweb_code_in_head = get_post_meta( $post_id, 'nkweb_code_in_head', true );
+	if ( ($nkweb_code_in_head != "false") && ($nkweb_code_in_head != "true") ) {
+		$nkweb_code_in_head = get_option('nkweb_code_in_head');
+	}
+    }
+
+    if ( $nkweb_code_in_head == "true" ) {
         $location = "wp_head";
     } else {
         $location = "wp_footer";
@@ -126,6 +150,8 @@ function nk_evaluation()
  */
 function activate_NKgoogleanalytics()
 {
+    if ( ! current_user_can( 'activate_plugins' ) )
+	return;
 
     $domain = 'your-domain.com';
 
@@ -138,6 +164,7 @@ function activate_NKgoogleanalytics()
     add_option('nkweb_track_login_and_register', 'false');
     add_option('nkweb_Universal_Analytics', 'true');
     add_option('nkweb_Domain', $domain);
+    add_option('nkweb_Domain_Auto', 'true');
     add_option('nkweb_fingerprintjs', 'false');
     add_option('nkweb_anonymizeip', 'false');
     add_option('nkweb_Use_Custom', 'false');
@@ -146,6 +173,8 @@ function activate_NKgoogleanalytics()
     add_option('nkweb_Error', '');
     add_option('nkweb_code_in_head', 'true');
     add_option('nkweb_ignore', '');
+    add_option('nkweb_Custom_js', '');
+    add_option('nkweb_Custom_Values', '');
 
 }
 
@@ -153,13 +182,17 @@ function activate_NKgoogleanalytics()
 /**
  * Plugin  deactivation
  */
-function deactive_NKgoogleanalytics()
+function uninstall_NKgoogleanalytics()
 {
+  if ( ! current_user_can( 'activate_plugins' ) )
+	          return;
+
   delete_option('nkweb_id');
   delete_option('nkweb_Display_Advertising');
   delete_option('nkweb_track_login_and_register');
   delete_option('nkweb_Universal_Analytics');
-  delete_option('nkweb_Domain');+
+  delete_option('nkweb_Domain');
+  delete_option('nkweb_Domain_Auto');
   delete_option('nkweb_fingerprintjs');
   delete_option('nkweb_anonymizeip');
   delete_option('nkweb_Use_Custom');
@@ -168,8 +201,36 @@ function deactive_NKgoogleanalytics()
   delete_option('nkweb_Error');
   delete_option('nkweb_code_in_head');
   delete_option('nkweb_ignore');
+  delete_option('nkweb_Custom_js');
+  delete_option('nkweb_Custom_Values');
+
+  $allposts = get_posts( 'numberposts=-1&post_type=post&post_status=any' );
+  $allpages = get_posts( 'numberposts=-1&post_type=page&post_status=any' );
+
+  foreach( $allposts as $postinfo ) {
+	  delete_post_meta( $postinfo->ID, 'nkweb_code_in_head');
+	  delete_post_meta( $postinfo->ID, 'nkweb_Use_Custom_js');
+	  delete_post_meta( $postinfo->ID, 'nkweb_Custom_js');
+	  delete_post_meta( $postinfo->ID, 'nkweb_Use_Custom_Values');
+	  delete_post_meta( $postinfo->ID, 'nkweb_Custom_Values');
+	  delete_post_meta( $postinfo->ID, 'nkweb_Use_Custom');
+	  delete_post_meta( $postinfo->ID, 'nkweb_Custom_Code');
+  }
+
+  foreach( $allpages as $postinfo ) {
+	  delete_post_meta( $postinfo->ID, 'nkweb_code_in_head');
+	  delete_post_meta( $postinfo->ID, 'nkweb_Use_Custom_js');
+	  delete_post_meta( $postinfo->ID, 'nkweb_Custom_js');
+	  delete_post_meta( $postinfo->ID, 'nkweb_Use_Custom_Values');
+	  delete_post_meta( $postinfo->ID, 'nkweb_Custom_Values');
+	  delete_post_meta( $postinfo->ID, 'nkweb_Use_Custom');
+	  delete_post_meta( $postinfo->ID, 'nkweb_Custom_Code');
+  }
 }
 
+/**
+ * Options page
+ */
 
 function admin_init_NKgoogleanalytics()
 {
@@ -178,6 +239,7 @@ function admin_init_NKgoogleanalytics()
   register_setting('NKgoogleanalytics', 'nkweb_track_login_and_register');
   register_setting('NKgoogleanalytics', 'nkweb_Universal_Analytics');
   register_setting('NKgoogleanalytics', 'nkweb_Domain');
+  register_setting('NKgoogleanalytics', 'nkweb_Domain_Auto');
   register_setting('NKgoogleanalytics', 'nkweb_fingerprintjs');
   register_setting('NKgoogleanalytics', 'nkweb_anonymizeip');
   register_setting('NKgoogleanalytics', 'nkweb_Use_Custom');
@@ -186,8 +248,9 @@ function admin_init_NKgoogleanalytics()
   register_setting('NKgoogleanalytics', 'nkweb_Error');
   register_setting('NKgoogleanalytics', 'nkweb_code_in_head');
   register_setting('NKgoogleanalytics', 'nkweb_ignore');
+  register_setting('NKgoogleanalytics', 'nkweb_Custom_js');
+  register_setting('NKgoogleanalytics', 'nkweb_Custom_Values');
 }
-
 
 function admin_menu_NKgoogleanalytics()
 {
@@ -197,9 +260,47 @@ function admin_menu_NKgoogleanalytics()
 
 function options_page_NKgoogleanalytics()
 {
-  include(WP_PLUGIN_DIR.'/nk-google-analytics/options.php');
+  include(WP_PLUGIN_DIR.'/nk-google-analytics/admin/options.php');
 }
 
+/**
+ * Metabox for each post and page
+ */
+
+function add_metabox_NKgoogleanalytics()
+{
+	$screens = array( 'post', 'page');
+
+	foreach ( $screens as $screen) {
+		add_meta_box(
+			'NKgoogleanalytics',
+			__( 'NK Google Analytics Settings', 'NKgoogleanalytics'),
+			'render_metabox_NKgoogleanalytics',
+			$screen
+		);
+
+	}
+}
+
+function render_metabox_NKgoogleanalytics( $post )
+{
+  include(WP_PLUGIN_DIR.'/nk-google-analytics/admin/metabox.php');
+}
+
+function save_metabox_NKgoogleanalytics( $post_id )
+{
+  include(WP_PLUGIN_DIR.'/nk-google-analytics/admin/save_metabox.php');
+}
+
+function load_metabox_NKgoogleanalytics()
+{
+	add_action( 'add_meta_boxes', 'add_metabox_NKgoogleanalytics');
+	add_action( 'save_post', 'save_metabox_NKgoogleanalytics');
+}
+
+/**
+ * Outputs the javascript code for google analytics
+ */
 
 function NKgoogleanalytics()
 {
@@ -209,12 +310,43 @@ function NKgoogleanalytics()
     $Display_Advertising = get_option('nkweb_Display_Advertising');
     $Universal_Analytics = get_option('nkweb_Universal_Analytics');
     $Domain = get_option('nkweb_Domain');
+    $nkweb_Domain_Auto = get_option('nkweb_Domain_Auto');
     $nkweb_fingerprintjs = get_option('nkweb_fingerprintjs');
     $nkweb_anonymizeip = get_option('nkweb_anonymizeip');
     $nkweb_Use_Custom = get_option('nkweb_Use_Custom');
     $nkweb_Custom_Code = get_option('nkweb_Custom_Code');
     $nkweb_Enable_GA = get_option('nkweb_Enable_GA');
     $nkweb_Error = get_option('nkweb_Error');
+    $nkweb_Custom_js = get_option('nkweb_Custom_js');
+    $nkweb_Custom_Values = get_option('nkweb_Custom_Values');
+    $post_id = nk_get_post_id();
+
+    if ( $post_id != "false" ) {
+	$nkweb_Use_Custom_post = get_post_meta( $post_id, 'nkweb_Use_Custom', true );
+	$nkweb_Custom_Code_post = get_post_meta( $post_id, 'nkweb_Custom_Code', true );
+	$nkweb_Use_Custom_js_post = get_post_meta( $post_id, 'nkweb_Use_Custom_js', true );
+	$nkweb_Custom_js_post = get_post_meta( $post_id, 'nkweb_Custom_js', true );
+	$nkweb_Use_Custom_Values_post = get_post_meta( $post_id, 'nkweb_Use_Custom_Values', true );
+	$nkweb_Custom_Values_post = get_post_meta( $post_id, 'nkweb_Custom_Values', true );
+
+	if ( (  $nkweb_Use_Custom_post == "true" ) ) {
+		$nkweb_Use_Custom = "$nkweb_Use_Custom_post";
+		$nkweb_Custom_Code = "$nkweb_Custom_Code_post";
+	}
+
+	if ( $nkweb_Use_Custom_js_post == "true" ) {
+		$nkweb_Custom_js = "$nkweb_Custom_js_post";
+	} else if ( $nkweb_Use_Custom_js_post == "false" ) {
+		$nkweb_Custom_js = "";
+	}
+
+	if ( $nkweb_Use_Custom_Values_post == "true" ) {
+		$nkweb_Custom_Values = "$nkweb_Custom_Values_post";
+	} else if ( $nkweb_Use_Custom_Values_post == "false" ) {
+		$nkweb_Custom_Values = "";
+	}
+
+    }
 
     $tk = '';
 
@@ -225,10 +357,10 @@ function NKgoogleanalytics()
 
         if ($nkweb_Use_Custom == 'true') {
 
-            $tk .= '<script type="text/javascript">' . $nkweb_Custom_Code . '</script>';
+            $tk .= '<script type="text/javascript">' . $nkweb_Custom_Code . "</script> \n";
             $tk = str_replace('<script><script>', '<script>', $tk);
             $tk = str_replace('<script type="text/javascript"><script>', '<script>', $tk);
-            $tk = str_replace('</script></script>', '</script>', $tk);
+            $tk = str_replace('</script></script>', "</script> \n", $tk);
 
         } else {
 
@@ -279,13 +411,17 @@ function NKgoogleanalytics()
                     $tk .= "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) \n";
                     $tk .= "})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); \n";
 
-                    $tk .= "ga('create', '" . $nkweb_id. "', '" . $Domain . "', {";
+                    $tk .= "ga('create', '" . $nkweb_id. "'";
 
                     if ($nkweb_fingerprintjs=="true") {
-                       $tk .= "'storage': 'none', 'clientId': new Fingerprint().get()";
+                        $tk .= ", { 'storage': 'none', 'clientId': new Fingerprint().get()}";
+                    } else if ($nkweb_Domain_Auto=="true") {
+                        $tk .= ", 'auto'";
+                    } else {
+                        $tk .= ", '" . $Domain . "'";
                     }
 
-                    $tk .= "}); \n";
+                    $tk .= "); \n";
 
                     if ($nkweb_anonymizeip=="true") {
                        $tk .= "ga('set', 'anonymizeIp', true); \n";
@@ -294,6 +430,14 @@ function NKgoogleanalytics()
                     if ($Display_Advertising=="true") {
                         $tk .= "ga('require', 'displayfeatures'); \n";
                     }
+
+		    if ( ! empty($nkweb_Custom_js)) {
+			$tk .= "$nkweb_Custom_js\n";
+		    }
+
+		    if ( ! empty($nkweb_Custom_Values)) {
+			$tk .= "ga('set', {" . $nkweb_Custom_Values . "}); \n";
+		    }
 
                     $tk .= "ga('send', 'pageview'); \n";
                     $tk .= "</script> \n";
@@ -355,13 +499,15 @@ function nk_load_textdomain()
     Start process
 */
 register_activation_hook(__FILE__, 'activate_NKgoogleanalytics');
-register_deactivation_hook(__FILE__, 'deactive_NKgoogleanalytics');
+register_uninstall_hook(__FILE__, 'uninstall_NKgoogleanalytics');
 
 
 if (is_admin()) {
     //add_action('plugins_loaded', 'nk_load_textdomain');
     add_action('admin_init', 'admin_init_NKgoogleanalytics');
     add_action('admin_menu', 'admin_menu_NKgoogleanalytics');
+    add_action('load-post.php', 'load_metabox_NKgoogleanalytics');
+    add_action('load-post-new.php', 'load_metabox_NKgoogleanalytics');
 }
 
 if (!is_admin()) {
